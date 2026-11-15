@@ -1,0 +1,11 @@
+{
+  "framework": "nextjs",
+  "functions": {
+    "app/api/analyze/route.ts": {
+      "maxDuration": 300
+    },
+    "app/api/warroom/route.ts": {
+      "maxDuration": 60
+    }
+  }
+}
