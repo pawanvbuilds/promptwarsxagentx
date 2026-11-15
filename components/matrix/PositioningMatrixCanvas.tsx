@@ -24,12 +24,12 @@ export function PositioningMatrixCanvas({ matrix }: PositioningMatrixCanvasProps
   const toSvgY = (y: number) => center - (y / 100) * (usable / 2);
 
   return (
-    <div className="w-full rounded-2xl bg-slate-950 border border-slate-800/80 p-5 flex flex-col items-center">
+    <div className="w-full rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800/80 p-5 flex flex-col items-center">
       <div className="w-full flex items-center justify-between mb-3 text-xs">
-        <span className="font-semibold text-slate-300">
+        <span className="font-semibold text-slate-700 dark:text-slate-300">
           2x2 Strategic Positioning Matrix
         </span>
-        <span className="text-slate-400">
+        <span className="text-slate-500 dark:text-slate-400">
           Hover points to inspect rationale
         </span>
       </div>
@@ -47,28 +47,28 @@ export function PositioningMatrixCanvas({ matrix }: PositioningMatrixCanvasProps
             y={padding}
             width={usable / 2}
             height={usable / 2}
-            className="fill-slate-900/40"
+            className="fill-slate-200/60 dark:fill-slate-900/40"
           />
           <rect
             x={center}
             y={padding}
             width={usable / 2}
             height={usable / 2}
-            className="fill-emerald-950/20"
+            className="fill-emerald-100/60 dark:fill-emerald-950/20"
           />
           <rect
             x={padding}
             y={center}
             width={usable / 2}
             height={usable / 2}
-            className="fill-slate-900/20"
+            className="fill-slate-100 dark:fill-slate-900/20"
           />
           <rect
             x={center}
             y={center}
             width={usable / 2}
             height={usable / 2}
-            className="fill-slate-900/40"
+            className="fill-slate-200/60 dark:fill-slate-900/40"
           />
 
           {/* Grid Borders */}
@@ -106,7 +106,7 @@ export function PositioningMatrixCanvas({ matrix }: PositioningMatrixCanvasProps
             x={size - padding - 8}
             y={padding + 16}
             textAnchor="end"
-            className="fill-emerald-400 text-[10px] font-bold tracking-wider uppercase opacity-80"
+            className="fill-emerald-600 dark:fill-emerald-400 text-[10px] font-bold tracking-wider uppercase opacity-80"
           >
             {matrix.quadrantNotes.topRight}
           </text>
@@ -114,7 +114,7 @@ export function PositioningMatrixCanvas({ matrix }: PositioningMatrixCanvasProps
             x={padding + 8}
             y={padding + 16}
             textAnchor="start"
-            className="fill-slate-400 text-[10px] font-medium opacity-70"
+            className="fill-slate-500 dark:fill-slate-400 text-[10px] font-medium opacity-70"
           >
             {matrix.quadrantNotes.topLeft}
           </text>
@@ -122,7 +122,7 @@ export function PositioningMatrixCanvas({ matrix }: PositioningMatrixCanvasProps
             x={size - padding - 8}
             y={size - padding - 10}
             textAnchor="end"
-            className="fill-slate-400 text-[10px] font-medium opacity-70"
+            className="fill-slate-500 dark:fill-slate-400 text-[10px] font-medium opacity-70"
           >
             {matrix.quadrantNotes.bottomRight}
           </text>
@@ -130,7 +130,7 @@ export function PositioningMatrixCanvas({ matrix }: PositioningMatrixCanvasProps
             x={padding + 8}
             y={size - padding - 10}
             textAnchor="start"
-            className="fill-slate-400 text-[10px] font-medium opacity-70"
+            className="fill-slate-500 dark:fill-slate-400 text-[10px] font-medium opacity-70"
           >
             {matrix.quadrantNotes.bottomLeft}
           </text>
@@ -140,7 +140,7 @@ export function PositioningMatrixCanvas({ matrix }: PositioningMatrixCanvasProps
             x={center}
             y={size - 14}
             textAnchor="middle"
-            className="fill-slate-300 text-[11px] font-semibold"
+            className="fill-slate-600 dark:fill-slate-300 text-[11px] font-semibold"
           >
             {matrix.xAxisLabel}
           </text>
@@ -149,7 +149,7 @@ export function PositioningMatrixCanvas({ matrix }: PositioningMatrixCanvasProps
             y={center}
             textAnchor="middle"
             transform={`rotate(-90 18 ${center})`}
-            className="fill-slate-300 text-[11px] font-semibold"
+            className="fill-slate-600 dark:fill-slate-300 text-[11px] font-semibold"
           >
             {matrix.yAxisLabel}
           </text>
@@ -176,7 +176,7 @@ export function PositioningMatrixCanvas({ matrix }: PositioningMatrixCanvasProps
                     cx={cx}
                     cy={cy}
                     r="12"
-                    className="fill-emerald-500/20 stroke-emerald-400 stroke-1 animate-pulse"
+                    className="fill-emerald-200 dark:fill-emerald-500/20 stroke-emerald-400 stroke-1 animate-pulse"
                   />
                 )}
 
@@ -186,8 +186,8 @@ export function PositioningMatrixCanvas({ matrix }: PositioningMatrixCanvasProps
                   r={isOurs ? 6 : 4.5}
                   className={
                     isOurs
-                      ? "fill-emerald-400 stroke-white stroke-2 shadow-lg"
-                      : "fill-slate-400 stroke-slate-900 stroke-1"
+                      ? "fill-emerald-600 dark:fill-emerald-400 stroke-white stroke-2 shadow-lg"
+                      : "fill-slate-500 dark:fill-slate-400 stroke-slate-200 dark:stroke-slate-900 stroke-1"
                   }
                 />
 
@@ -197,8 +197,8 @@ export function PositioningMatrixCanvas({ matrix }: PositioningMatrixCanvasProps
                   textAnchor="middle"
                   className={`text-[10px] font-bold ${
                     isOurs
-                      ? "fill-emerald-300 drop-shadow"
-                      : "fill-slate-300 drop-shadow"
+                      ? "fill-emerald-700 dark:fill-emerald-300 drop-shadow"
+                      : "fill-slate-600 dark:fill-slate-300 drop-shadow"
                   }`}
                 >
                   {pt.name}
@@ -210,19 +210,19 @@ export function PositioningMatrixCanvas({ matrix }: PositioningMatrixCanvasProps
 
         {/* Hover Rationale Card */}
         {hoveredPoint && (
-          <div className="absolute bottom-2 left-2 right-2 bg-slate-900/95 border border-slate-700/80 rounded-xl p-3 shadow-xl backdrop-blur-md pointer-events-none text-xs z-20">
+          <div className="absolute bottom-2 left-2 right-2 bg-white/95 dark:bg-slate-900/95 border border-slate-300/80 dark:border-slate-700/80 rounded-xl p-3 shadow-xl backdrop-blur-md pointer-events-none text-xs z-20">
             <div className="flex items-center justify-between mb-1">
-              <span className="font-bold text-slate-100 flex items-center gap-1.5">
+              <span className="font-bold text-slate-900 dark:text-slate-100 flex items-center gap-1.5">
                 {hoveredPoint.isOurVenture && (
                   <span className="w-2 h-2 rounded-full bg-emerald-400" />
                 )}
                 {hoveredPoint.name}
               </span>
-              <span className="font-mono text-[11px] text-slate-400">
+              <span className="font-mono text-[11px] text-slate-500 dark:text-slate-400">
                 [X: {hoveredPoint.x}, Y: {hoveredPoint.y}]
               </span>
             </div>
-            <p className="text-slate-300 leading-snug">{hoveredPoint.rationale}</p>
+            <p className="text-slate-700 dark:text-slate-300 leading-snug">{hoveredPoint.rationale}</p>
           </div>
         )}
       </div>

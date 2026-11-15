@@ -60,7 +60,7 @@ export function ReportNavTabs({ activeTab, onChangeTab }: ReportNavTabsProps) {
   };
 
   return (
-    <div className="w-full border-b border-slate-800 mb-6 overflow-x-auto">
+    <div className="w-full border-b border-slate-200 dark:border-slate-800 mb-6 overflow-x-auto">
       <div
         ref={tabsListRef}
         role="tablist"
@@ -83,13 +83,13 @@ export function ReportNavTabs({ activeTab, onChangeTab }: ReportNavTabsProps) {
               onKeyDown={(e) => handleKeyDown(e, idx)}
               className={`flex items-center gap-2 px-4 py-3 text-xs sm:text-sm font-semibold border-b-2 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 rounded-t-lg ${
                 isActive
-                  ? "border-emerald-400 text-emerald-400 bg-emerald-500/5 font-bold"
-                  : "border-transparent text-slate-400 hover:text-slate-200 hover:border-slate-700"
+                  ? "border-emerald-400 text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-500/5 font-bold"
+                  : "border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 hover:border-slate-300 dark:hover:border-slate-700"
               }`}
             >
               <Icon
                 className={`w-4 h-4 ${
-                  isActive ? "text-emerald-400" : "text-slate-400"
+                  isActive ? "text-emerald-600 dark:text-emerald-400" : "text-slate-500 dark:text-slate-400"
                 }`}
               />
               <span>{tab.label}</span>

@@ -57,7 +57,7 @@ export function Navbar({
   return (
     <header
       role="banner"
-      className="sticky top-0 z-40 w-full border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md"
+      className="sticky top-0 z-40 w-full border-b border-slate-200 dark:border-slate-800/80 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-md"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Brand / Logo */}
@@ -72,14 +72,14 @@ export function Navbar({
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-bold text-lg tracking-tight text-white group-hover:text-emerald-400 transition-colors">
+                <span className="font-bold text-lg tracking-tight text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
                   VentureArchitect
                 </span>
-                <span className="px-1.5 py-0.5 text-[10px] font-semibold tracking-wider uppercase rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                <span className="px-1.5 py-0.5 text-[10px] font-semibold tracking-wider uppercase rounded bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/20">
                   PS08
                 </span>
               </div>
-              <p className="text-xs text-slate-400 hidden sm:block">
+              <p className="text-xs text-slate-500 dark:text-slate-400 hidden sm:block">
                 Autonomous Startup Co-Pilot Engine
               </p>
             </div>
@@ -92,21 +92,21 @@ export function Navbar({
           <div className="relative">
             <button
               onClick={() => setIsPresetsOpen(!isPresetsOpen)}
-              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-slate-300 hover:text-white bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-lg transition-colors focus:ring-2 focus:ring-emerald-500"
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded-lg transition-colors focus:ring-2 focus:ring-emerald-500"
               aria-expanded={isPresetsOpen}
               aria-haspopup="true"
               aria-label="Browse Sample Ventures"
             >
-              <Layers className="w-3.5 h-3.5 text-emerald-400" />
+              <Layers className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
               <span className="hidden sm:inline">Showcase</span> Ventures
             </button>
 
             {isPresetsOpen && (
               <div
-                className="absolute right-0 mt-2 w-72 rounded-xl bg-slate-900 border border-slate-800 shadow-2xl p-2 z-50 animate-in fade-in zoom-in-95 duration-100"
+                className="absolute right-0 mt-2 w-72 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl p-2 z-50 animate-in fade-in zoom-in-95 duration-100"
                 role="menu"
               >
-                <div className="px-2 py-1.5 text-[11px] font-semibold tracking-wider text-slate-400 uppercase">
+                <div className="px-2 py-1.5 text-[11px] font-semibold tracking-wider text-slate-500 dark:text-slate-400 uppercase">
                   Pre-Loaded Case Studies
                 </div>
                 {SHOWCASE_PRESETS.map((preset) => (
@@ -116,18 +116,18 @@ export function Navbar({
                       onSelectPreset(preset);
                       setIsPresetsOpen(false);
                     }}
-                    className="w-full text-left p-2.5 rounded-lg hover:bg-slate-800/80 transition-colors group flex flex-col gap-1"
+                    className="w-full text-left p-2.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-colors group flex flex-col gap-1"
                     role="menuitem"
                   >
                     <div className="flex items-center justify-between">
-                      <span className="font-semibold text-xs text-slate-200 group-hover:text-emerald-400">
+                      <span className="font-semibold text-xs text-slate-800 dark:text-slate-200 group-hover:text-emerald-600 dark:group-hover:text-emerald-400">
                         {preset.title}
                       </span>
-                      <span className="text-[10px] px-1.5 py-0.2 rounded bg-slate-800 text-slate-400 border border-slate-700">
+                      <span className="text-[10px] px-1.5 py-0.2 rounded bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 border border-slate-300 dark:border-slate-700">
                         {preset.badge}
                       </span>
                     </div>
-                    <p className="text-[11px] text-slate-400 line-clamp-1">
+                    <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1">
                       {preset.tagline}
                     </p>
                   </button>
@@ -139,13 +139,13 @@ export function Navbar({
           {/* History Button */}
           <button
             onClick={onOpenHistory}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-slate-300 hover:text-white bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-lg transition-colors focus:ring-2 focus:ring-emerald-500"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded-lg transition-colors focus:ring-2 focus:ring-emerald-500"
             aria-label={historyCount > 0 ? `View saved history (${historyCount} saved)` : "View saved history"}
           >
-            <History className="w-3.5 h-3.5 text-slate-400" />
+            <History className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400" />
             <span className="hidden sm:inline">Dossiers</span>
             {historyCount > 0 && (
-              <span className="px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+              <span className="px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-emerald-100 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/30">
                 {historyCount}
               </span>
             )}
@@ -164,13 +164,13 @@ export function Navbar({
           {/* Dark / Light Toggle */}
           <button
             onClick={toggleTheme}
-            className="p-2 text-slate-400 hover:text-slate-200 bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-lg transition-colors focus:ring-2 focus:ring-emerald-500"
+            className="p-2 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded-lg transition-colors focus:ring-2 focus:ring-emerald-500"
             aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
           >
             {theme === "dark" ? (
-              <Sun className="w-4 h-4 text-amber-400" />
+              <Sun className="w-4 h-4 text-amber-600 dark:text-amber-400" />
             ) : (
-              <Moon className="w-4 h-4 text-indigo-400" />
+              <Moon className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
             )}
           </button>
         </div>

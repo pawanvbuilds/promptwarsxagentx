@@ -31,14 +31,14 @@ export function EconomicsCalculator({ initialEconomics }: EconomicsCalculatorPro
   const isExceptional = calculatedLtvCac >= 5.0;
 
   return (
-    <div className="rounded-2xl bg-slate-900 border border-slate-800 p-6 shadow-xl">
+    <div className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 shadow-xl">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
         <div>
-          <h3 className="text-sm font-bold text-white tracking-wide uppercase flex items-center gap-2">
-            <DollarSign className="w-4 h-4 text-emerald-400" />
+          <h3 className="text-sm font-bold text-slate-900 dark:text-white tracking-wide uppercase flex items-center gap-2">
+            <DollarSign className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
             Dynamic Unit Economics & LTV/CAC Simulator
           </h3>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-slate-500 dark:text-slate-400">
             Slide parameters to stress-test your cash payback horizon and pricing resilience
           </p>
         </div>
@@ -47,10 +47,10 @@ export function EconomicsCalculator({ initialEconomics }: EconomicsCalculatorPro
           <span
             className={`px-3 py-1 rounded-full text-xs font-bold border ${
               isExceptional
-                ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/30"
+                ? "bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-200 dark:border-emerald-500/30"
                 : isHealthyRatio
-                ? "bg-teal-500/10 text-teal-400 border-teal-500/30"
-                : "bg-amber-500/10 text-amber-400 border-amber-500/30"
+                ? "bg-teal-50 dark:bg-teal-500/10 text-teal-600 dark:text-teal-400 border-teal-300 dark:border-teal-500/30"
+                : "bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-300 dark:border-amber-500/30"
             }`}
           >
             {isExceptional
@@ -67,8 +67,8 @@ export function EconomicsCalculator({ initialEconomics }: EconomicsCalculatorPro
         {/* ASP / ACV Slider */}
         <div className="space-y-2">
           <div className="flex items-center justify-between text-xs">
-            <span className="text-slate-300 font-medium">Monthly ASP / ACV</span>
-            <span className="font-mono font-bold text-emerald-400">
+            <span className="text-slate-700 dark:text-slate-300 font-medium">Monthly ASP / ACV</span>
+            <span className="font-mono font-bold text-emerald-600 dark:text-emerald-400">
               ${aspMonthly}/mo
             </span>
           </div>
@@ -82,7 +82,7 @@ export function EconomicsCalculator({ initialEconomics }: EconomicsCalculatorPro
             className="w-full accent-emerald-500 cursor-pointer"
             aria-label="Monthly Average Selling Price"
           />
-          <div className="flex justify-between text-[10px] text-slate-400">
+          <div className="flex justify-between text-[10px] text-slate-500 dark:text-slate-400">
             <span>$20</span>
             <span>$750</span>
             <span>$1,500</span>
@@ -92,8 +92,8 @@ export function EconomicsCalculator({ initialEconomics }: EconomicsCalculatorPro
         {/* CAC Slider */}
         <div className="space-y-2">
           <div className="flex items-center justify-between text-xs">
-            <span className="text-slate-300 font-medium">Acquisition Cost (CAC)</span>
-            <span className="font-mono font-bold text-emerald-400">${cac}</span>
+            <span className="text-slate-700 dark:text-slate-300 font-medium">Acquisition Cost (CAC)</span>
+            <span className="font-mono font-bold text-emerald-600 dark:text-emerald-400">${cac}</span>
           </div>
           <input
             type="range"
@@ -105,7 +105,7 @@ export function EconomicsCalculator({ initialEconomics }: EconomicsCalculatorPro
             className="w-full accent-emerald-500 cursor-pointer"
             aria-label="Customer Acquisition Cost"
           />
-          <div className="flex justify-between text-[10px] text-slate-400">
+          <div className="flex justify-between text-[10px] text-slate-500 dark:text-slate-400">
             <span>$100</span>
             <span>$2,500</span>
             <span>$5,000</span>
@@ -115,8 +115,8 @@ export function EconomicsCalculator({ initialEconomics }: EconomicsCalculatorPro
         {/* Churn Slider */}
         <div className="space-y-2">
           <div className="flex items-center justify-between text-xs">
-            <span className="text-slate-300 font-medium">Monthly Churn %</span>
-            <span className="font-mono font-bold text-emerald-400">
+            <span className="text-slate-700 dark:text-slate-300 font-medium">Monthly Churn %</span>
+            <span className="font-mono font-bold text-emerald-600 dark:text-emerald-400">
               {monthlyChurnPercent}%
             </span>
           </div>
@@ -130,7 +130,7 @@ export function EconomicsCalculator({ initialEconomics }: EconomicsCalculatorPro
             className="w-full accent-emerald-500 cursor-pointer"
             aria-label="Monthly Customer Churn Rate"
           />
-          <div className="flex justify-between text-[10px] text-slate-400">
+          <div className="flex justify-between text-[10px] text-slate-500 dark:text-slate-400">
             <span>0.5% (Elite)</span>
             <span>5%</span>
             <span>10% (Dangerous)</span>
@@ -140,8 +140,8 @@ export function EconomicsCalculator({ initialEconomics }: EconomicsCalculatorPro
         {/* Gross Margin Slider */}
         <div className="space-y-2">
           <div className="flex items-center justify-between text-xs">
-            <span className="text-slate-300 font-medium">Gross Margin %</span>
-            <span className="font-mono font-bold text-emerald-400">
+            <span className="text-slate-700 dark:text-slate-300 font-medium">Gross Margin %</span>
+            <span className="font-mono font-bold text-emerald-600 dark:text-emerald-400">
               {grossMarginPercent}%
             </span>
           </div>
@@ -155,7 +155,7 @@ export function EconomicsCalculator({ initialEconomics }: EconomicsCalculatorPro
             className="w-full accent-emerald-500 cursor-pointer"
             aria-label="Gross Profit Margin"
           />
-          <div className="flex justify-between text-[10px] text-slate-400">
+          <div className="flex justify-between text-[10px] text-slate-500 dark:text-slate-400">
             <span>30%</span>
             <span>70%</span>
             <span>95%</span>
@@ -166,61 +166,61 @@ export function EconomicsCalculator({ initialEconomics }: EconomicsCalculatorPro
       {/* Calculated Output Metric Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
         {/* LTV */}
-        <div className="p-4 rounded-xl bg-slate-950 border border-slate-800">
-          <div className="flex items-center gap-1.5 text-xs text-slate-400 mb-1">
-            <TrendingUp className="w-3.5 h-3.5 text-emerald-400" />
+        <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
+          <div className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 mb-1">
+            <TrendingUp className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
             <span>Simulated LTV</span>
           </div>
-          <div className="text-xl font-mono font-extrabold text-white">
+          <div className="text-xl font-mono font-extrabold text-slate-900 dark:text-white">
             ${calculatedLtv.toLocaleString()}
           </div>
-          <div className="text-[10px] text-slate-400 mt-1">
+          <div className="text-[10px] text-slate-500 dark:text-slate-400 mt-1">
             ~{avgLifetimeMonths} mo retention
           </div>
         </div>
 
         {/* LTV/CAC */}
-        <div className="p-4 rounded-xl bg-slate-950 border border-slate-800">
-          <div className="flex items-center gap-1.5 text-xs text-slate-400 mb-1">
-            <DollarSign className="w-3.5 h-3.5 text-teal-400" />
+        <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
+          <div className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 mb-1">
+            <DollarSign className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400" />
             <span>LTV / CAC Ratio</span>
           </div>
           <div
             className={`text-xl font-mono font-extrabold ${
-              isHealthyRatio ? "text-emerald-400" : "text-amber-400"
+              isHealthyRatio ? "text-emerald-600 dark:text-emerald-400" : "text-amber-600 dark:text-amber-400"
             }`}
           >
             {calculatedLtvCac}x
           </div>
-          <div className="text-[10px] text-slate-400 mt-1">
+          <div className="text-[10px] text-slate-500 dark:text-slate-400 mt-1">
             Benchmark: &gt; 3.0x
           </div>
         </div>
 
         {/* Payback Horizon */}
-        <div className="p-4 rounded-xl bg-slate-950 border border-slate-800">
-          <div className="flex items-center gap-1.5 text-xs text-slate-400 mb-1">
-            <Clock className="w-3.5 h-3.5 text-cyan-400" />
+        <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
+          <div className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 mb-1">
+            <Clock className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400" />
             <span>Cash Payback</span>
           </div>
-          <div className="text-xl font-mono font-extrabold text-white">
+          <div className="text-xl font-mono font-extrabold text-slate-900 dark:text-white">
             {paybackMonths} mo
           </div>
-          <div className="text-[10px] text-slate-400 mt-1">
+          <div className="text-[10px] text-slate-500 dark:text-slate-400 mt-1">
             Target: &lt; 12 mo
           </div>
         </div>
 
         {/* Gross Profit Per Acquired Customer */}
-        <div className="p-4 rounded-xl bg-slate-950 border border-slate-800">
-          <div className="flex items-center gap-1.5 text-xs text-slate-400 mb-1">
-            <Percent className="w-3.5 h-3.5 text-indigo-400" />
+        <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
+          <div className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 mb-1">
+            <Percent className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
             <span>Net Customer Margin</span>
           </div>
-          <div className="text-xl font-mono font-extrabold text-white">
+          <div className="text-xl font-mono font-extrabold text-slate-900 dark:text-white">
             ${Math.max(0, calculatedLtv - cac).toLocaleString()}
           </div>
-          <div className="text-[10px] text-slate-400 mt-1">
+          <div className="text-[10px] text-slate-500 dark:text-slate-400 mt-1">
             Gross profit after CAC
           </div>
         </div>

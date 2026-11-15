@@ -1,10 +1,40 @@
 @import "tailwindcss";
 
+/* Tailwind v4 defaults `dark:` to prefers-color-scheme. This project toggles
+   theme via <html data-theme="dark"> + the .dark class, so wire the variant to
+   those signals instead. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *, .dark, .dark *));
+
 @layer base {
-  :root,
+  /* Light is the default theme (see app/layout.tsx). */
+  :root {
+    color-scheme: light;
+
+    --bg-canvas: #f8fcfa;
+    --bg-surface: #ffffff;
+    --bg-card: #ffffff;
+    --bg-card-hover: #f1f5f9;
+    --bg-muted: #f1f5f9;
+    --border-subtle: #e2e8f0;
+    --border-strong: #cbd5e1;
+    --border-accent: #059669;
+
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
+
+    --accent-emerald: #059669;
+    --accent-emerald-subtle: rgba(5, 150, 105, 0.1);
+    --accent-cyan: #0284c7;
+    --accent-indigo: #4f46e5;
+    --accent-amber: #d97706;
+    --accent-rose: #e11d48;
+  }
+
   html[data-theme="dark"],
-  [data-theme="dark"],
   html.dark {
+    color-scheme: dark;
+
     --bg-canvas: #090d16;
     --bg-surface: #0f172a;
     --bg-card: #131c31;
@@ -13,40 +43,17 @@
     --border-subtle: #1e293b;
     --border-strong: #334155;
     --border-accent: #10b981;
-    
+
     --text-primary: #f8fafc;
     --text-secondary: #cbd5e1;
     --text-muted: #94a3b8;
-    
+
     --accent-emerald: #10b981;
     --accent-emerald-subtle: rgba(16, 185, 129, 0.12);
     --accent-cyan: #06b6d4;
     --accent-indigo: #6366f1;
     --accent-amber: #f59e0b;
     --accent-rose: #f43f5e;
-  }
-
-  html[data-theme="light"],
-  [data-theme="light"] {
-    --bg-canvas: #f8fafc;
-    --bg-surface: #ffffff;
-    --bg-card: #ffffff;
-    --bg-card-hover: #f1f5f9;
-    --bg-muted: #f1f5f9;
-    --border-subtle: #e2e8f0;
-    --border-strong: #cbd5e1;
-    --border-accent: #059669;
-    
-    --text-primary: #0f172a;
-    --text-secondary: #334155;
-    --text-muted: #64748b;
-    
-    --accent-emerald: #059669;
-    --accent-emerald-subtle: rgba(5, 150, 105, 0.1);
-    --accent-cyan: #0284c7;
-    --accent-indigo: #4f46e5;
-    --accent-amber: #d97706;
-    --accent-rose: #e11d48;
   }
 
   body {
@@ -63,187 +70,6 @@
     outline: 2px solid var(--accent-emerald);
     outline-offset: 2px;
   }
-}
-
-/* =============================================================================
-   THEME STYLING OVERRIDES (Triggered by data-theme="light" vs data-theme="dark")
-   ============================================================================= */
-html[data-theme="dark"],
-[data-theme="dark"] {
-  color-scheme: dark;
-  background-color: #090d16 !important;
-  color: #f8fafc !important;
-}
-
-[data-theme="dark"] body {
-  background-color: #090d16 !important;
-  color: #f8fafc !important;
-}
-
-html[data-theme="light"],
-[data-theme="light"] {
-  color-scheme: light;
-  background-color: #f8fafc !important;
-  color: #0f172a !important;
-}
-
-[data-theme="light"] body {
-  background-color: #f8fafc !important;
-  color: #0f172a !important;
-}
-
-/* Ensure instantaneous, crisp theme switching without lag or stuck transition frames */
-html[data-theme] *,
-html[data-theme] body,
-html[data-theme] header,
-html[data-theme] [class*="bg-"] {
-  transition: none !important;
-}
-
-/* Structural Header & Footer */
-[data-theme="light"] header {
-  background-color: rgba(255, 255, 255, 0.92) !important;
-  border-bottom-color: #e2e8f0 !important;
-}
-
-[data-theme="light"] footer,
-[data-theme="light"] [role="contentinfo"] {
-  background-color: #ffffff !important;
-  border-top-color: #e2e8f0 !important;
-}
-
-/* Backgrounds — Cards, Panels, Modals, Forms */
-[data-theme="light"] [class*="bg-slate-950"] {
-  background-color: #f8fafc !important;
-}
-
-[data-theme="light"] [class*="bg-slate-900"] {
-  background-color: #ffffff !important;
-}
-
-[data-theme="light"] [class*="bg-slate-800"] {
-  background-color: #f1f5f9 !important;
-}
-
-[data-theme="light"] .hover\:bg-slate-800:hover,
-[data-theme="light"] [class*="hover:bg-slate-800"]:hover {
-  background-color: #e2e8f0 !important;
-}
-
-[data-theme="light"] .hover\:bg-slate-900:hover,
-[data-theme="light"] [class*="hover:bg-slate-900"]:hover {
-  background-color: #f1f5f9 !important;
-}
-
-/* Borders */
-[data-theme="light"] [class*="border-slate-800"],
-[data-theme="light"] [class*="border-slate-700"] {
-  border-color: #e2e8f0 !important;
-}
-
-/* Typography */
-[data-theme="light"] h1,
-[data-theme="light"] h2,
-[data-theme="light"] h3,
-[data-theme="light"] h4,
-[data-theme="light"] h5,
-[data-theme="light"] h6,
-[data-theme="light"] .text-white,
-[data-theme="light"] [class*="text-slate-100"] {
-  color: #0f172a !important;
-}
-
-[data-theme="light"] [class*="text-slate-200"],
-[data-theme="light"] [class*="text-slate-300"] {
-  color: #334155 !important;
-}
-
-[data-theme="light"] [class*="text-slate-400"] {
-  color: #64748b !important;
-}
-
-[data-theme="light"] .hover\:text-white:hover {
-  color: #0f172a !important;
-}
-
-/* Form Controls */
-[data-theme="light"] input:not([type="range"]),
-[data-theme="light"] select,
-[data-theme="light"] textarea {
-  background-color: #f8fafc !important;
-  color: #0f172a !important;
-  border-color: #cbd5e1 !important;
-}
-
-[data-theme="light"] input::placeholder,
-[data-theme="light"] textarea::placeholder {
-  color: #94a3b8 !important;
-}
-
-[data-theme="light"] select option {
-  background-color: #ffffff !important;
-  color: #0f172a !important;
-}
-
-/* Badges & Accent Overrides for Light Mode */
-[data-theme="light"] [class*="bg-emerald-500/10"] {
-  background-color: #ecfdf5 !important;
-  border-color: #a7f3d0 !important;
-  color: #047857 !important;
-}
-
-[data-theme="light"] [class*="bg-indigo-500/10"] {
-  background-color: #eef2ff !important;
-  border-color: #c7d2fe !important;
-  color: #4338ca !important;
-}
-
-[data-theme="light"] [class*="bg-amber-500/10"] {
-  background-color: #fffbeb !important;
-  border-color: #fde68a !important;
-  color: #b45309 !important;
-}
-
-[data-theme="light"] [class*="bg-rose-500/10"] {
-  background-color: #fff1f2 !important;
-  border-color: #fecdd3 !important;
-  color: #be123c !important;
-}
-
-/* Tab Navigation */
-[data-theme="light"] [role="tab"][aria-selected="true"] {
-  color: #047857 !important;
-  border-bottom-color: #059669 !important;
-  background-color: #ecfdf5 !important;
-}
-
-[data-theme="light"] [role="tab"][aria-selected="false"] {
-  color: #64748b !important;
-}
-
-[data-theme="light"] [role="tab"][aria-selected="false"]:hover {
-  color: #0f172a !important;
-  border-bottom-color: #cbd5e1 !important;
-}
-
-/* Elevation & Shadows */
-[data-theme="light"] .rounded-2xl.border,
-[data-theme="light"] .rounded-xl.border,
-[data-theme="light"] form {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05) !important;
-}
-
-/* Modals & Dialog Backdrops */
-[data-theme="light"] [role="dialog"],
-[data-theme="light"] dialog {
-  background-color: #ffffff !important;
-  color: #0f172a !important;
-}
-
-[data-theme="light"] [class*="bg-slate-950/70"],
-[data-theme="light"] [class*="bg-slate-950/60"],
-[data-theme="light"] [class*="bg-slate-950/50"] {
-  background-color: rgba(15, 23, 42, 0.35) !important;
 }
 
 /* Custom scrollbars */

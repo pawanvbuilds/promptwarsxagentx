@@ -1,9 +1,25 @@
 "use client";
 
 import React, { useState } from "react";
-import { ArrowRight, Sparkles, Globe, DollarSign, Target, Flag } from "lucide-react";
+import {
+  Sparkles,
+  Zap,
+  ShieldCheck,
+  BarChart3,
+  Globe,
+  Briefcase,
+  Users,
+  ChevronDown,
+  Info,
+  ArrowRight,
+  Target,
+  TrendingUp,
+  ClipboardCheck,
+  CheckCircle2,
+  Lightbulb,
+} from "lucide-react";
 import type { FounderInput } from "@/lib/types/domain";
-import { SHOWCASE_PRESETS, type ShowcasePreset } from "@/lib/presets/showcase-ventures";
+import { HeroIllustration3D } from "./ui/HeroIllustration3D";
 
 interface IntakeConsoleProps {
   onSubmit: (input: FounderInput) => void;
@@ -19,31 +35,22 @@ export function IntakeConsole({
   const [idea, setIdea] = useState(initialValues?.idea || "");
   const [region, setRegion] = useState(initialValues?.region || "Global");
   const [businessModel, setBusinessModel] = useState(
-    initialValues?.businessModel || "B2B SaaS"
+    initialValues?.businessModel || "B2B SaaS (Per-Seat)"
   );
   const [targetCustomer, setTargetCustomer] = useState(
-    initialValues?.targetCustomer || "Mid-Market Tech Teams"
+    initialValues?.targetCustomer || "Students"
   );
-  const [stage, setStage] = useState<"Idea" | "Pre-Seed" | "Seed" | "Series A">(
-    initialValues?.stage || "Idea"
+  const [stage, setStage] = useState<"Idea" | "MVP" | "Pre-Seed" | "Seed" | "Series A">(
+    initialValues?.stage || "MVP"
   );
   const [error, setError] = useState<string | null>(null);
 
-  // Keyboard shortcut: Cmd/Ctrl + Enter to submit
+  // Submit on Enter (unless Shift is pressed for multiline)
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if ((e.metaKey || e.ctrlKey) && e.key === "Enter") {
+    if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       handleSubmit();
     }
-  };
-
-  const handleApplyPreset = (preset: ShowcasePreset) => {
-    setIdea(preset.input.idea);
-    setRegion(preset.input.region);
-    setBusinessModel(preset.input.businessModel);
-    setTargetCustomer(preset.input.targetCustomer || "Mid-Market Tech Teams");
-    setStage(preset.input.stage || "Pre-Seed");
-    setError(null);
   };
 
   const handleSubmit = (e?: React.FormEvent) => {
@@ -63,212 +70,331 @@ export function IntakeConsole({
   };
 
   return (
-    <section
-      aria-labelledby="intake-heading"
-      className="max-w-4xl mx-auto px-4 sm:px-6 py-8"
-    >
-      {/* Hero Header */}
-      <div className="text-center mb-8">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold mb-4">
-          <Sparkles className="w-3.5 h-3.5" />
-          <span>Autonomous Multi-Agent System (PS08)</span>
-        </div>
-        <h1
-          id="intake-heading"
-          className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-4"
-        >
-          Architect & Validate Your Startup in{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">
-            60 Seconds
-          </span>
-        </h1>
-        <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto">
-          Six autonomous AI specialists deconstruct your thesis with real-time web research, competitive 2x2 positioning, customer Mom-Test discovery, and a 90-day execution roadmap.
-        </p>
+    <section aria-labelledby="hero-title" className="w-full max-w-6xl mx-auto px-4 sm:px-8 py-2 pb-12 transition-colors">
+      {/* ================================================================= */}
+      {/* 1. HERO SECTION                                                   */}
+      {/* ================================================================= */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-2 pb-6">
+        {/* Left Column: Headline, Description & Feature Badges */}
+        <div className="lg:col-span-7 flex flex-col items-start text-left">
+          {/* Badge: AI-Powered Startup Validation */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#dcfce7] dark:bg-emerald-950/60 border border-[#bbf7d0]/80 dark:border-emerald-800/60 text-[#15803d] dark:text-emerald-300 text-xs font-semibold mb-4 shadow-2xs transition-colors">
+            <span className="w-2 h-2 rounded-full bg-[#16a34a] animate-pulse" />
+            <span>AI-Powered Startup Validation</span>
+          </div>
 
-        {/* Quick Presets Bar */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mt-6">
-          <span className="text-xs text-slate-400 mr-1">Try verified venture presets:</span>
-          {SHOWCASE_PRESETS.map((preset) => (
-            <button
-              key={preset.id}
-              type="button"
-              onClick={() => handleApplyPreset(preset)}
-              className="text-xs px-3 py-1 rounded-full bg-slate-900 hover:bg-slate-800 border border-slate-700/80 text-slate-300 hover:text-emerald-400 transition-colors focus:ring-2 focus:ring-emerald-500"
-            >
-              {preset.title}
-            </button>
-          ))}
+          {/* Main Headline */}
+          <h1
+            id="hero-title"
+            className="text-3xl sm:text-4xl lg:text-[46px] font-black text-[#0f172a] dark:text-white tracking-tight leading-[1.12] transition-colors"
+          >
+            Architect & Validate<br />
+            Your Startup in<br />
+            <span className="text-[#059669] dark:text-[#10b981]">60 Seconds</span>
+          </h1>
+
+          {/* Subtitle Description */}
+          <p className="text-[#475569] dark:text-slate-300 text-sm sm:text-base font-normal max-w-xl mt-4 leading-relaxed transition-colors">
+            Six autonomous AI specialists to construct your thesis with real-time
+            research, competitive analysis, customer insights, and a 30-day execution roadmap.
+          </p>
+
+          {/* 3 Value Proposition Pill Badges */}
+          <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 mt-6">
+            {/* Badge 1: Instant Insights */}
+            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 dark:bg-slate-900/90 border border-slate-200/90 dark:border-slate-800 text-xs font-medium text-[#334155] dark:text-slate-300 shadow-2xs hover:border-[#86efac] dark:hover:border-emerald-600 transition-colors">
+              <Zap className="w-3.5 h-3.5 text-[#059669] dark:text-[#34d399] fill-[#059669]/15" />
+              <span>Instant Insights</span>
+            </div>
+
+            {/* Badge 2: Data-Driven */}
+            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 dark:bg-slate-900/90 border border-slate-200/90 dark:border-slate-800 text-xs font-medium text-[#334155] dark:text-slate-300 shadow-2xs hover:border-[#86efac] dark:hover:border-emerald-600 transition-colors">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#059669] dark:text-[#34d399]" />
+              <span>Data-Driven</span>
+            </div>
+
+            {/* Badge 3: Actionable Plan */}
+            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 dark:bg-slate-900/90 border border-slate-200/90 dark:border-slate-800 text-xs font-medium text-[#334155] dark:text-slate-300 shadow-2xs hover:border-[#86efac] dark:hover:border-emerald-600 transition-colors">
+              <BarChart3 className="w-3.5 h-3.5 text-[#059669] dark:text-[#34d399]" />
+              <span>Actionable Plan</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Column: 3D Isometric Screen & Glowing Lightbulb */}
+        <div className="lg:col-span-5 flex items-center justify-center lg:justify-end">
+          <HeroIllustration3D />
         </div>
       </div>
 
-      {/* Main Intake Form Card */}
+      {/* ================================================================= */}
+      {/* 2. STARTUP CONCEPT & WORKFLOW INPUT CARD                          */}
+      {/* ================================================================= */}
       <form
         onSubmit={handleSubmit}
-        className="rounded-2xl border border-slate-800 bg-slate-900/70 p-6 sm:p-8 shadow-2xl backdrop-blur-sm"
+        className="rounded-[26px] bg-white dark:bg-[#0f172a] border border-[#e2e8f0]/90 dark:border-slate-800 p-6 sm:p-8 shadow-[0_12px_36px_-6px_rgba(0,0,0,0.05),0_2px_8px_-1px_rgba(0,0,0,0.03)] dark:shadow-[0_12px_36px_-6px_rgba(0,0,0,0.4)] relative mt-2 transition-colors"
       >
-        <fieldset className="space-y-6">
-          <legend className="sr-only">Startup Concept & Market Parameters</legend>
+        {/* Card Header */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+          <div className="flex items-center gap-2">
+            {/* Green 4-Point Sparkle Icon */}
+            <Sparkles className="w-4 h-4 text-[#059669] dark:text-[#34d399] fill-[#059669] dark:fill-[#34d399]" />
+            <h2 className="text-base sm:text-lg font-bold text-[#0f172a] dark:text-white">
+              Startup Concept & Core Workflow
+            </h2>
+          </div>
 
-          {/* Primary Idea Input */}
-          <div>
-            <div className="flex items-center justify-between mb-2">
-              <label
-                htmlFor="startup-idea"
-                className="text-sm font-semibold text-slate-200 flex items-center gap-1.5"
-              >
-                <span>Startup Concept & Core Workflow</span>
-                <span className="text-emerald-400">*</span>
-              </label>
-              <span className="text-xs text-slate-400">
-                {idea.length}/2500 characters • ⌘+Enter to submit
-              </span>
-            </div>
+          {/* Character Counter & Enter Hint Pill Badge */}
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100/80 dark:bg-slate-800/90 border border-slate-200/50 dark:border-slate-700/60 text-xs text-[#64748b] dark:text-slate-300 font-medium shadow-2xs transition-colors">
+            <span className="w-2 h-2 rounded-full bg-[#10b981]" />
+            <span>
+              {idea.length}/2500 characters • Hit Enter to submit
+            </span>
+          </div>
+        </div>
+
+        {/* Textarea Input Container */}
+        <div className="relative rounded-2xl bg-[#f8fafc]/80 dark:bg-[#090d16] border border-[#e2e8f0] dark:border-slate-800 focus-within:border-[#059669] focus-within:ring-2 focus-within:ring-[#059669]/15 p-3.5 transition-all">
+          <div className="flex items-start gap-2.5">
+            <Lightbulb className="w-4 h-4 text-[#94a3b8] dark:text-slate-500 mt-1 shrink-0" aria-hidden="true" />
             <textarea
               id="startup-idea"
               name="startup-idea"
-              rows={4}
-              required
-              minLength={10}
-              maxLength={2500}
+              rows={3}
               value={idea}
               onChange={(e) => {
                 setIdea(e.target.value);
                 if (error) setError(null);
               }}
               onKeyDown={handleKeyDown}
-              placeholder="e.g. An autonomous AI RevOps agent that monitors sales emails and call transcripts to keep CRM fields (Salesforce, HubSpot) 100% updated and forecasts accurate without manual rep data entry..."
-              className="w-full rounded-xl bg-slate-950 border border-slate-800 p-4 text-sm text-slate-100 placeholder:text-slate-400 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors resize-y min-h-[110px]"
+              placeholder="e.g. A platform to help students learn coding through interactive projects..."
+              className="w-full bg-transparent border-0 p-0 text-sm sm:text-[15px] text-[#0f172a] dark:text-white placeholder:text-[#94a3b8] dark:placeholder:text-slate-500 focus:ring-0 focus:outline-hidden resize-y min-h-[70px] leading-relaxed"
               aria-describedby={error ? "idea-error" : undefined}
             />
-            {error && (
-              <p id="idea-error" className="mt-1.5 text-xs text-rose-400 font-medium">
-                {error}
-              </p>
-            )}
           </div>
+        </div>
 
-          {/* Configuration Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {/* Target Geography */}
-            <div>
-              <label
-                htmlFor="region"
-                className="text-xs font-semibold text-slate-300 flex items-center gap-1.5 mb-1.5"
-              >
-                <Globe className="w-3.5 h-3.5 text-slate-400" />
-                Target Geography
-              </label>
+        {error && (
+          <p id="idea-error" className="mt-2 text-xs text-rose-500 font-medium">
+            {error}
+          </p>
+        )}
+
+        {/* Dropdown Select Controls Row (4 Columns) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 mt-5">
+          {/* 1. Target Geography */}
+          <div>
+            <label
+              htmlFor="region-select"
+              className="text-xs font-medium text-[#475569] dark:text-slate-300 flex items-center gap-1.5 mb-1.5"
+            >
+              <Globe className="w-3.5 h-3.5 text-[#64748b] dark:text-slate-400" />
+              <span>Target Geography</span>
+            </label>
+            <div className="relative">
               <select
-                id="region"
+                id="region-select"
                 value={region}
                 onChange={(e) => setRegion(e.target.value)}
-                className="w-full rounded-lg bg-slate-950 border border-slate-800 px-3 py-2 text-xs text-slate-200 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+                className="w-full appearance-none rounded-xl bg-[#f8fafc]/90 dark:bg-[#090d16] border border-[#e2e8f0] dark:border-slate-800 px-3.5 py-2.5 pr-8 text-xs sm:text-sm font-semibold text-[#0f172a] dark:text-white focus:border-[#059669] focus:ring-1 focus:ring-[#059669] transition-all cursor-pointer"
               >
-                <option value="Global">Global / Worldwide</option>
+                <option value="Global">Global</option>
                 <option value="North America">North America (US & Canada)</option>
                 <option value="European Union">European Union & UK</option>
                 <option value="Asia-Pacific">Asia-Pacific (APAC)</option>
                 <option value="India">India & South Asia</option>
-                <option value="Latin America">Latin America (LATAM)</option>
+                <option value="Latin America">Latin America</option>
               </select>
-            </div>
-
-            {/* Business Model */}
-            <div>
-              <label
-                htmlFor="business-model"
-                className="text-xs font-semibold text-slate-300 flex items-center gap-1.5 mb-1.5"
-              >
-                <DollarSign className="w-3.5 h-3.5 text-slate-400" />
-                Business Model
-              </label>
-              <select
-                id="business-model"
-                value={businessModel}
-                onChange={(e) => setBusinessModel(e.target.value)}
-                className="w-full rounded-lg bg-slate-950 border border-slate-800 px-3 py-2 text-xs text-slate-200 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
-              >
-                <option value="B2B SaaS (Per-Seat)">B2B SaaS (Per-Seat)</option>
-                <option value="Enterprise Annual Contract (ACV)">Enterprise Annual Contract</option>
-                <option value="Usage-Based / Consumption">Usage-Based / Consumption</option>
-                <option value="Marketplace (Take-Rate)">Marketplace (Take-Rate)</option>
-                <option value="B2C Subscription / Prosumer">B2C Subscription / Prosumer</option>
-                <option value="FinTech / Interchange">FinTech / Interchange</option>
-              </select>
-            </div>
-
-            {/* Target Customer Segment */}
-            <div>
-              <label
-                htmlFor="target-customer"
-                className="text-xs font-semibold text-slate-300 flex items-center gap-1.5 mb-1.5"
-              >
-                <Target className="w-3.5 h-3.5 text-slate-400" />
-                Target Customer
-              </label>
-              <input
-                id="target-customer"
-                type="text"
-                value={targetCustomer}
-                onChange={(e) => setTargetCustomer(e.target.value)}
-                placeholder="e.g. VP RevOps, Solo Founders"
-                className="w-full rounded-lg bg-slate-950 border border-slate-800 px-3 py-2 text-xs text-slate-200 placeholder:text-slate-400 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
-              />
-            </div>
-
-            {/* Current Stage */}
-            <div>
-              <label
-                htmlFor="venture-stage"
-                className="text-xs font-semibold text-slate-300 flex items-center gap-1.5 mb-1.5"
-              >
-                <Flag className="w-3.5 h-3.5 text-slate-400" />
-                Current Stage
-              </label>
-              <select
-                id="venture-stage"
-                value={stage}
-                onChange={(e) =>
-                  setStage(e.target.value as "Idea" | "Pre-Seed" | "Seed" | "Series A")
-                }
-                className="w-full rounded-lg bg-slate-950 border border-slate-800 px-3 py-2 text-xs text-slate-200 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
-              >
-                <option value="Idea">Idea / Concept</option>
-                <option value="Pre-Seed">Pre-Seed (Prototyping)</option>
-                <option value="Seed">Seed (Closed Pilots)</option>
-                <option value="Series A">Series A (Scaling Revenue)</option>
-              </select>
+              <ChevronDown className="w-4 h-4 text-[#64748b] dark:text-slate-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
             </div>
           </div>
 
-          {/* Action Trigger Button */}
-          <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="text-xs text-slate-400 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-              <span>Multi-agent DAG pipeline ready • 0-database privacy</span>
+          {/* 2. Business Model */}
+          <div>
+            <label
+              htmlFor="business-model-select"
+              className="text-xs font-medium text-[#475569] dark:text-slate-300 flex items-center gap-1.5 mb-1.5"
+            >
+              <Briefcase className="w-3.5 h-3.5 text-[#64748b] dark:text-slate-400" />
+              <span>Business Model</span>
+            </label>
+            <div className="relative">
+              <select
+                id="business-model-select"
+                value={businessModel}
+                onChange={(e) => setBusinessModel(e.target.value)}
+                className="w-full appearance-none rounded-xl bg-[#f8fafc]/90 dark:bg-[#090d16] border border-[#e2e8f0] dark:border-slate-800 px-3.5 py-2.5 pr-8 text-xs sm:text-sm font-semibold text-[#0f172a] dark:text-white focus:border-[#059669] focus:ring-1 focus:ring-[#059669] transition-all cursor-pointer"
+              >
+                <option value="B2B SaaS (Per-Seat)">B2B SaaS (Per-Seat)</option>
+                <option value="Enterprise Annual Contract">Enterprise Annual Contract</option>
+                <option value="Usage-Based / Consumption">Usage-Based / Consumption</option>
+                <option value="Marketplace (Take-Rate)">Marketplace (Take-Rate)</option>
+                <option value="B2C Subscription">B2C Subscription</option>
+                <option value="FinTech / Interchange">FinTech / Interchange</option>
+              </select>
+              <ChevronDown className="w-4 h-4 text-[#64748b] dark:text-slate-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
             </div>
+          </div>
 
+          {/* 3. Target Customer */}
+          <div>
+            <label
+              htmlFor="target-customer-select"
+              className="text-xs font-medium text-[#475569] dark:text-slate-300 flex items-center gap-1.5 mb-1.5"
+            >
+              <Users className="w-3.5 h-3.5 text-[#64748b] dark:text-slate-400" />
+              <span>Target Customer</span>
+            </label>
+            <div className="relative">
+              <select
+                id="target-customer-select"
+                value={targetCustomer}
+                onChange={(e) => setTargetCustomer(e.target.value)}
+                className="w-full appearance-none rounded-xl bg-[#f8fafc]/90 dark:bg-[#090d16] border border-[#e2e8f0] dark:border-slate-800 px-3.5 py-2.5 pr-8 text-xs sm:text-sm font-semibold text-[#0f172a] dark:text-white focus:border-[#059669] focus:ring-1 focus:ring-[#059669] transition-all cursor-pointer"
+              >
+                <option value="Students">Students</option>
+                <option value="Mid-Market Tech Teams">Mid-Market Tech Teams</option>
+                <option value="Developers & Engineers">Developers & Engineers</option>
+                <option value="Enterprise Procurement">Enterprise Procurement</option>
+                <option value="SMB Owners">SMB Owners</option>
+                <option value="Founders & Creators">Founders & Creators</option>
+              </select>
+              <ChevronDown className="w-4 h-4 text-[#64748b] dark:text-slate-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+            </div>
+          </div>
+
+          {/* 4. Growth Stage */}
+          <div>
+            <label
+              htmlFor="growth-stage-select"
+              className="text-xs font-medium text-[#475569] dark:text-slate-300 flex items-center gap-1.5 mb-1.5"
+            >
+              <BarChart3 className="w-3.5 h-3.5 text-[#64748b] dark:text-slate-400" />
+              <span>Growth Stage</span>
+            </label>
+            <div className="relative">
+              <select
+                id="growth-stage-select"
+                value={stage}
+                onChange={(e) =>
+                  setStage(e.target.value as "Idea" | "MVP" | "Pre-Seed" | "Seed" | "Series A")
+                }
+                className="w-full appearance-none rounded-xl bg-[#f8fafc]/90 dark:bg-[#090d16] border border-[#e2e8f0] dark:border-slate-800 px-3.5 py-2.5 pr-8 text-xs sm:text-sm font-semibold text-[#0f172a] dark:text-white focus:border-[#059669] focus:ring-1 focus:ring-[#059669] transition-all cursor-pointer"
+              >
+                <option value="MVP">MVP</option>
+                <option value="Idea">Idea</option>
+                <option value="Pre-Seed">Pre-Seed</option>
+                <option value="Seed">Seed</option>
+                <option value="Series A">Series A</option>
+              </select>
+              <ChevronDown className="w-4 h-4 text-[#64748b] dark:text-slate-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+            </div>
+          </div>
+        </div>
+
+        {/* Card Footer: Privacy Notice & CTA Button */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-6 pt-2">
+          {/* Left: Your data is secure & private */}
+          <div className="flex items-center gap-1.5 text-xs text-[#334155] dark:text-slate-300 font-medium">
+            <CheckCircle2 className="w-4 h-4 text-[#059669] dark:text-[#34d399] fill-[#059669]/10" />
+            <span>Your data is secure & private</span>
+            <span
+              title="Analyses run client-side with zero cloud database persistence"
+              className="cursor-help text-[#94a3b8] dark:text-slate-500 hover:text-[#475569] dark:hover:text-slate-300"
+            >
+              <Info className="w-3.5 h-3.5" />
+            </span>
+          </div>
+
+          {/* Right: Validate My Startup Button + Sparkle Accent Marks */}
+          <div className="relative inline-flex items-center">
             <button
               type="submit"
-              disabled={isLoading || !idea.trim()}
-              className="w-full sm:w-auto px-8 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 hover:to-teal-300 text-slate-950 font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/25 transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 focus:ring-2 focus:ring-white"
+              disabled={isLoading}
+              className="w-full sm:w-auto px-7 py-3 rounded-full bg-[#044e34] hover:bg-[#033c28] text-white font-bold text-sm inline-flex items-center justify-center gap-2 shadow-[0_6px_20px_rgba(4,78,52,0.3)] transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer focus:outline-hidden"
             >
               {isLoading ? (
                 <>
-                  <div className="w-4 h-4 border-2 border-slate-950 border-t-transparent rounded-full animate-spin" />
-                  <span>Orchestrating Agents...</span>
+                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                  <span>Validating Startup...</span>
                 </>
               ) : (
                 <>
-                  <span>Initiate Multi-Agent Validation</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <span>Validate My Startup</span>
+                  <ArrowRight className="w-4 h-4 text-white" />
                 </>
               )}
             </button>
+
+            {/* Little Green Sparkle Accents radiating from the top-right corner */}
+            <div className="hidden sm:block absolute -top-2.5 -right-2 pointer-events-none select-none" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+                <line x1="5" y1="13" x2="8" y2="8" stroke="#10b981" strokeWidth="2.2" strokeLinecap="round" />
+                <line x1="11" y1="15" x2="13" y2="8" stroke="#10b981" strokeWidth="2.2" strokeLinecap="round" />
+                <line x1="17" y1="12" x2="14" y2="7" stroke="#10b981" strokeWidth="2.2" strokeLinecap="round" />
+              </svg>
+            </div>
           </div>
-        </fieldset>
+        </div>
       </form>
+
+      {/* ================================================================= */}
+      {/* 3. BOTTOM FEATURE BAR ("Why VentureArchitect?")                   */}
+      {/* ================================================================= */}
+      <div className="rounded-2xl sm:rounded-3xl bg-[#eef9f3]/70 dark:bg-[#0a1a14]/80 border border-[#d1fae5] dark:border-[#064e3b]/80 p-5 sm:p-6 mt-6 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 shadow-2xs transition-colors">
+        {/* Left Heading & Tagline */}
+        <div className="flex flex-col text-left max-w-xs shrink-0">
+          <h3 className="text-sm sm:text-base font-bold text-[#0f172a] dark:text-white">
+            Why VentureArchitect?
+          </h3>
+          <p className="text-xs text-[#64748b] dark:text-slate-400 mt-0.5 leading-relaxed">
+            Get enterprise-grade startup validation with cutting-edge AI.
+          </p>
+        </div>
+
+        {/* 4 Feature Columns */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 w-full lg:w-auto flex-1">
+          {/* Feature 1: Deep Market Analysis */}
+          <div className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-lg bg-[#d1fae5] dark:bg-[#064e3b]/50 flex items-center justify-center shrink-0">
+              <Target className="w-4 h-4 text-[#059669] dark:text-[#34d399]" />
+            </div>
+            <span className="text-xs font-bold text-[#0f172a] dark:text-slate-200 leading-tight">
+              Deep Market<br className="hidden sm:inline" /> Analysis
+            </span>
+          </div>
+
+          {/* Feature 2: Competitive Benchmarking */}
+          <div className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-lg bg-[#d1fae5] dark:bg-[#064e3b]/50 flex items-center justify-center shrink-0">
+              <TrendingUp className="w-4 h-4 text-[#059669] dark:text-[#34d399]" />
+            </div>
+            <span className="text-xs font-bold text-[#0f172a] dark:text-slate-200 leading-tight">
+              Competitive<br className="hidden sm:inline" /> Benchmarking
+            </span>
+          </div>
+
+          {/* Feature 3: Customer Insights */}
+          <div className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-lg bg-[#d1fae5] dark:bg-[#064e3b]/50 flex items-center justify-center shrink-0">
+              <Users className="w-4 h-4 text-[#059669] dark:text-[#34d399]" />
+            </div>
+            <span className="text-xs font-bold text-[#0f172a] dark:text-slate-200 leading-tight">
+              Customer<br className="hidden sm:inline" /> Insights
+            </span>
+          </div>
+
+          {/* Feature 4: 30-Day Execution Roadmap */}
+          <div className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-lg bg-[#d1fae5] dark:bg-[#064e3b]/50 flex items-center justify-center shrink-0">
+              <ClipboardCheck className="w-4 h-4 text-[#059669] dark:text-[#34d399]" />
+            </div>
+            <span className="text-xs font-bold text-[#0f172a] dark:text-slate-200 leading-tight">
+              30-Day<br className="hidden sm:inline" /> Execution Roadmap
+            </span>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

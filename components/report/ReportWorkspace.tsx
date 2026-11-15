@@ -45,15 +45,15 @@ export function ReportWorkspace({ dossier, onOpenWarRoom }: ReportWorkspaceProps
       {dossier.citations && dossier.citations.length > 0 && (
         <section
           aria-labelledby="citations-heading"
-          className="mt-16 pt-8 border-t border-slate-800 text-xs text-slate-400"
+          className="mt-16 pt-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400"
         >
           <div className="flex items-center gap-2 mb-3">
-            <Globe className="w-4 h-4 text-emerald-400" />
-            <h3 id="citations-heading" className="font-bold text-slate-300 uppercase tracking-wider">
+            <Globe className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+            <h3 id="citations-heading" className="font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
               Real-Time Web Grounding Citations ({dossier.citations.length})
             </h3>
           </div>
-          <p className="mb-4 text-slate-400">
+          <p className="mb-4 text-slate-500 dark:text-slate-400">
             Market sizing estimates and competitor features are cross-referenced with public industry filings and web disclosures.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -63,15 +63,15 @@ export function ReportWorkspace({ dossier, onOpenWarRoom }: ReportWorkspaceProps
                 href={c.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition-colors flex items-start justify-between gap-2 group"
+                className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-colors flex items-start justify-between gap-2 group"
               >
                 <div>
-                  <div className="font-semibold text-slate-200 group-hover:text-emerald-400 line-clamp-1">
+                  <div className="font-semibold text-slate-800 dark:text-slate-200 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 line-clamp-1">
                     {c.title}
                   </div>
-                  <div className="text-[11px] font-mono text-slate-400">{c.domain}</div>
+                  <div className="text-[11px] font-mono text-slate-500 dark:text-slate-400">{c.domain}</div>
                 </div>
-                <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-emerald-400 shrink-0 mt-0.5" />
+                <ExternalLink className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 shrink-0 mt-0.5" />
               </a>
             ))}
           </div>

@@ -202,7 +202,7 @@ export const FounderInputSchema = z.object({
     .optional()
     .default("Early-Stage Tech Teams"),
   stage: z
-    .enum(["Idea", "Pre-Seed", "Seed", "Series A"])
+    .enum(["Idea", "MVP", "Pre-Seed", "Seed", "Series A"])
     .optional()
     .default("Idea"),
 });
