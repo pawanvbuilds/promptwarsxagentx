@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { X, Sparkles, ArrowRight, Zap } from "lucide-react";
+import { X, ArrowRight, Zap } from "lucide-react";
 import { SHOWCASE_PRESETS, type ShowcasePreset } from "@/lib/presets/showcase-ventures";
 
 interface PresetsModalProps {

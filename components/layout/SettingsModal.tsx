@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { X, Settings, ShieldCheck, Check, Key, Database, User } from "lucide-react";
+import { X, Settings, ShieldCheck, Check, Key, User } from "lucide-react";
 
 interface SettingsModalProps {
   isOpen: boolean;

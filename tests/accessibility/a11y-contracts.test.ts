@@ -43,13 +43,11 @@ describe("PS08 Startup Co-Pilot: Accessibility & WCAG Standards", () => {
     expect(cssContent).toContain("--bg-canvas: #090d16");
     
     // Must have light mode definitions
-    expect(cssContent).toContain('[data-theme="light"]');
-    expect(cssContent).toContain("--bg-canvas: #f8fafc");
+    expect(cssContent).toContain(":root");
+    expect(cssContent).toContain("--bg-canvas: #f8fcfa");
     expect(cssContent).toContain("--text-primary: #0f172a");
 
-    // Must have light mode body and container overrides
-    expect(cssContent).toContain('[data-theme="light"] body');
-    expect(cssContent).toContain('[data-theme="light"] header');
-    expect(cssContent).toContain('[data-theme="light"] [class*="bg-slate-900"]');
+    // Must wire Tailwind v4 dark variant to data-theme and .dark
+    expect(cssContent).toContain("@custom-variant dark");
   });
 });

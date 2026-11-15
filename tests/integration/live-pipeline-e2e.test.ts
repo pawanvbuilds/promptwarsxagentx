@@ -5,10 +5,12 @@ import { VentureDossierSchema, type FounderInput, type VentureDossier } from "..
 import { InteractiveWarRoomAgent } from "../../lib/agents/war-room";
 import type { VentureSSEEvent } from "../../lib/types/agent-events";
 
+const isLiveEnabled = Boolean(process.env.RUN_LIVE_E2E);
+
 describe("PS08 Startup Co-Pilot: Live Multi-Agent Pipeline E2E", () => {
   let generatedDossier: VentureDossier | null = null;
 
-  it(
+  it.skipIf(!isLiveEnabled)(
     "executes full 4-stage DAG pipeline with live LLM and search grounding",
     async () => {
       const input: FounderInput = {
@@ -103,7 +105,7 @@ describe("PS08 Startup Co-Pilot: Live Multi-Agent Pipeline E2E", () => {
     180000
   );
 
-  it(
+  it.skipIf(!isLiveEnabled)(
     "serves subsequent identical pipeline queries from cryptographic LRU cache in sub-50ms",
     async () => {
       const input: FounderInput = {
@@ -130,7 +132,7 @@ describe("PS08 Startup Co-Pilot: Live Multi-Agent Pipeline E2E", () => {
     30000
   );
 
-  it(
+  it.skipIf(!isLiveEnabled)(
     "executes live War Room consultation with YC Partner persona",
     async () => {
       const agent = new InteractiveWarRoomAgent();

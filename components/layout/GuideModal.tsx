@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { X, Sparkles, Cpu, Layers, ShieldCheck, ArrowRight, BookOpen } from "lucide-react";
+import { X, ArrowRight, BookOpen } from "lucide-react";
 
 interface GuideModalProps {
   isOpen: boolean;
