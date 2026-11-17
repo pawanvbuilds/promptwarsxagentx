@@ -10,44 +10,6 @@ export function HeroIllustration3D({ className = "" }: { className?: string }) {
         className="w-full h-full drop-shadow-xl overflow-visible"
       >
         <defs>
-          <style>{`
-            .card-screen-body { fill: url(#screenGlassGrad); stroke: url(#screenBorderGrad); }
-            .card-screen-nav { fill: #ecfdf5; opacity: 0.6; }
-            .card-grid-line { stroke: #e2e8f0; }
-            .card-pill-tag { fill: #ffffff; stroke: #e2e8f0; }
-            .card-pill-title { fill: #0f172a; }
-            .card-pill-sub { fill: #475569; }
-
-            [data-theme="dark"] .card-screen-body,
-            html.dark .card-screen-body {
-              fill: url(#darkScreenGlassGrad);
-              stroke: #334155;
-            }
-            [data-theme="dark"] .card-screen-nav,
-            html.dark .card-screen-nav {
-              fill: #1e293b;
-              opacity: 0.8;
-            }
-            [data-theme="dark"] .card-grid-line,
-            html.dark .card-grid-line {
-              stroke: #1e293b;
-              opacity: 0.6;
-            }
-            [data-theme="dark"] .card-pill-tag,
-            html.dark .card-pill-tag {
-              fill: #0f172a;
-              stroke: #334155;
-            }
-            [data-theme="dark"] .card-pill-title,
-            html.dark .card-pill-title {
-              fill: #f8fafc;
-            }
-            [data-theme="dark"] .card-pill-sub,
-            html.dark .card-pill-sub {
-              fill: #94a3b8;
-            }
-          `}</style>
-
           {/* Ambient Glows */}
           <radialGradient id="bulbGlow" cx="50%" cy="50%" r="50%">
             <stop offset="0%" stopColor="#fef08a" stopOpacity="0.8" />

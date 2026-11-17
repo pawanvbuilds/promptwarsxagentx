@@ -1,0 +1,503 @@
+{
+  "id": "verdetrace",
+  "badge": "ClimateTech / Supply Chain",
+  "title": "VerdeTrace",
+  "tagline": "Autonomous Scope 3 carbon accounting and supplier compliance platform.",
+  "category": "ClimateTech & Supply Chain Sustainability",
+  "input": {
+    "idea": "An automated Scope 3 emissions tracing engine that connects directly to ERP and logistics APIs (SAP, Oracle, Flexport) to calculate product-level carbon footprints and generate audit-ready CSRD compliance reports for EU and US enterprise supply chains.",
+    "region": "European Union & North America",
+    "businessModel": "Enterprise Annual Subscription",
+    "targetCustomer": "Chief Sustainability Officers & Supply Chain Directors ($50M+ Revenue)",
+    "stage": "Pre-Seed"
+  },
+  "precompiledDossier": {
+    "id": "va_preset_verdetrace",
+    "createdAt": "2026-11-17T11:40:22.454Z",
+    "input": {
+      "idea": "An automated Scope 3 emissions tracing engine that connects directly to ERP and logistics APIs (SAP, Oracle, Flexport) to calculate product-level carbon footprints and generate audit-ready CSRD compliance reports for EU and US enterprise supply chains.",
+      "region": "European Union & North America",
+      "businessModel": "Enterprise Annual Subscription",
+      "targetCustomer": "Chief Sustainability Officers & Supply Chain Directors ($50M+ Revenue)",
+      "stage": "Pre-Seed"
+    },
+    "framing": {
+      "ventureName": "VerdeTrace",
+      "oneLiner": "Automated Scope 3 emissions accounting and supply chain CSRD compliance engine.",
+      "category": "Enterprise ClimateTech & Supply Chain Compliance",
+      "valueProposition": "Reduces audit readiness cycles from 5 months to 4 days while cutting Scope 3 calculation errors by 88% through direct ERP ledger integration.",
+      "archetype": "Enterprise Compliance & Data Infrastructure",
+      "targetGeography": "European Union & North America",
+      "coreHypothesis": "Because the EU CSRD mandate imposes heavy fines on non-compliant enterprises, mid-market manufacturers will pay $40k+/yr for automated ERP-linked Scope 3 calculation rather than paying $150k+ to legacy consultancies.",
+      "searchQueries": {
+        "market": "Scope 3 carbon accounting software market size CSRD mandate 2025",
+        "competitors": "Watershed Sweep Persefoni carbon accounting software comparison",
+        "customers": "Supply chain director Scope 3 data collection pain points",
+        "risks": "CSRD compliance enforcement delays enterprise pushback"
+      }
+    },
+    "market": {
+      "tam": {
+        "valueFormatted": "$18.6 Billion",
+        "numericBillions": 18.6,
+        "formula": "62,000 Impacted Global Enterprises * $300,000 Average Compliance & Software Spend",
+        "methodology": "EU Corporate Sustainability Reporting Directive (CSRD) & SEC Climate Disclosure mandate analysis."
+      },
+      "sam": {
+        "valueFormatted": "$4.9 Billion",
+        "numericBillions": 4.9,
+        "rationale": "European and US mid-to-large manufacturers ($50M-$500M revenue) with multi-tier supplier networks."
+      },
+      "som": {
+        "valueFormatted": "$98 Million",
+        "numericBillions": 0.098,
+        "milestoneYear": "Year 4 Target",
+        "rationale": "Capture of ~2,400 mid-market enterprise accounts at $40,000 average ACV through ERP partner channels."
+      },
+      "cagrPercent": 24.6,
+      "marketMaturity": "Emerging / Nascent",
+      "tailwinds": [
+        {
+          "trend": "Legally Binding Regulatory Deadlines",
+          "impact": "EU CSRD penalties kick in with mandatory third-party limited assurance audits."
+        },
+        {
+          "trend": "Retailer Mandates (Walmart, IKEA)",
+          "impact": "Tier 1 suppliers face delisting if they cannot provide audited carbon data."
+        }
+      ],
+      "headwinds": [
+        {
+          "barrier": "Supplier Data Inertia",
+          "threatLevel": "Severe",
+          "description": "Tier 3 suppliers in emerging markets lack digital ledgers or accurate energy data."
+        },
+        {
+          "barrier": "Consulting Incumbents (Big 4)",
+          "threatLevel": "Moderate",
+          "description": "PwC, EY, and Deloitte bundling manual consulting audits with accounting services."
+        }
+      ],
+      "regulatoryLandscape": {
+        "summary": "Governed by EU CSRD, SEC Climate Rules, and GHG Protocol Scope 3 standards. Requires cryptographic audit trail for external auditors.",
+        "keyRegulations": [
+          "EU CSRD / ESRS E1",
+          "GHG Protocol Scope 3 Standards",
+          "ISO 14064 Carbon Footprint Verification"
+        ],
+        "complianceDifficulty": "Heavy"
+      }
+    },
+    "competitors": {
+      "directCompetitors": [
+        {
+          "name": "Watershed",
+          "url": "https://watershed.com",
+          "tagline": "Enterprise climate platform for running a sustainability program",
+          "pricingModel": "$60k - $250k+/year enterprise contracts",
+          "estimatedStageOrFunding": "Series C ($240M Raised, $1.8B Valuation)",
+          "coreStrengths": [
+            "Prestigious brand backing (Sequoia, Kleiner Perkins)",
+            "High customer trust",
+            "Extensive emissions factor database"
+          ],
+          "criticalWeaknesses": [
+            "Tailored for Fortune 500 tech/finance rather than physical manufacturing",
+            "Requires significant manual data cleansing"
+          ]
+        },
+        {
+          "name": "Persefoni",
+          "url": "https://persefoni.com",
+          "tagline": "Climate management and accounting platform for financial institutions",
+          "pricingModel": "Enterprise contracts ($50k+/year)",
+          "estimatedStageOrFunding": "Series C ($150M+ Raised)",
+          "coreStrengths": [
+            "Financial institution and carbon portfolio accounting dominance",
+            "Deep PCAF standard compliance"
+          ],
+          "criticalWeaknesses": [
+            "Complex financial interface unsuited for supply chain operations",
+            "High implementation friction"
+          ]
+        }
+      ],
+      "indirectAlternatives": [
+        {
+          "name": "Big 4 Accounting Consultants (PwC/Deloitte)",
+          "howUsersSolveItToday": "Hiring consultants at $300/hour to send email surveys to suppliers and build manual Excel models.",
+          "churnVulnerability": "Costs $150k-$300k every year; takes 5 months and results in non-repeatable static reports."
+        },
+        {
+          "name": "Internal Custom Spreadsheets",
+          "howUsersSolveItToday": "Sustainability teams compiling disconnected Excel files across procurement teams.",
+          "churnVulnerability": "High audit failure rate due to lack of version control and formula corruption."
+        }
+      ],
+      "positioningMatrix": {
+        "xAxisLabel": "Manual Consultant Heavy <---> Automated API & ERP Ledger Connected",
+        "yAxisLabel": "Corporate / Financial Focus <---> Physical Supply Chain & Manufacturing Focus",
+        "quadrantNotes": {
+          "topRight": "Automated & Supply-Chain Specialized (VerdeTrace Focus)",
+          "bottomRight": "Automated Corporate Generalist",
+          "topLeft": "Consulting Manual Audits (Big 4)",
+          "bottomLeft": "Basic Carbon Offsetting Point Tools"
+        },
+        "points": [
+          {
+            "name": "VerdeTrace",
+            "x": 85,
+            "y": 80,
+            "isOurVenture": true,
+            "rationale": "Direct ERP invoice line-item integration purpose-built for multi-tier manufacturing supply chains."
+          },
+          {
+            "name": "Watershed",
+            "x": 50,
+            "y": -20,
+            "isOurVenture": false,
+            "rationale": "Great corporate ESG tool, but lacks deep multi-tier logistics Bill of Materials (BOM) decomposition."
+          },
+          {
+            "name": "PwC / Big 4",
+            "x": -80,
+            "y": 50,
+            "isOurVenture": false,
+            "rationale": "Deep enterprise trust, but 100% manual billable-hour model."
+          }
+        ]
+      },
+      "featureComparisonMatrix": [
+        {
+          "capability": "Automated ERP BOM Item Mapping",
+          "ourAdvantage": "High",
+          "incumbentBenchmark": "Manual spreadsheet upload"
+        },
+        {
+          "capability": "Audit-Ready CSRD One-Click Report",
+          "ourAdvantage": "High",
+          "incumbentBenchmark": "Takes 6-8 weeks of manual consultant drafting"
+        },
+        {
+          "capability": "Fortune 100 Brand Recognition",
+          "ourAdvantage": "Low",
+          "incumbentBenchmark": "Watershed and Persefoni lead with enterprise logos"
+        },
+        {
+          "capability": "Supplier Zero-Login Portal",
+          "ourAdvantage": "High",
+          "incumbentBenchmark": "Requires paid enterprise seat"
+        }
+      ],
+      "whiteSpaceOpportunities": [
+        {
+          "gap": "Self-Service Tier 2/3 Supplier Portal",
+          "whyUnaddressed": "Incumbents charge by user seats, penalizing companies for inviting hundreds of external small suppliers.",
+          "tacticalExploitation": "Provide unlimited free supplier data entry portals with automated OCR invoice scanning."
+        },
+        {
+          "gap": "Audit-Provenance Cryptographic Ledger",
+          "whyUnaddressed": "Incumbents output static PDFs without source line-item traceability.",
+          "tacticalExploitation": "Generate verifiable data hash stamps for third-party auditing firms."
+        }
+      ],
+      "moatAssessment": {
+        "primaryMoatType": "Network Effects",
+        "moatScoreOutOfTen": 8.5,
+        "durabilityVerdict": "Once suppliers enter data for one customer on VerdeTrace, their profile is shared across all buyers in the network, creating an insurmountable data flywheel."
+      }
+    },
+    "customers": {
+      "primaryICP": {
+        "archetypeName": "Chief Sustainability Officer & Supply Chain Risk VP",
+        "roleTitle": "VP of Global Supply Chain / CSO",
+        "organizationType": "European & US industrial manufacturers with $50M-$500M annual revenue",
+        "dayInTheLife": "Drowning in customer questionnaires from enterprise retail buyers asking for product-level carbon footprints, while suppliers ignore email requests for utility bills.",
+        "acutePainPoints": [
+          "Legal threat of massive EU CSRD non-compliance fines.",
+          "Suppliers refuse to respond to 50-page carbon questionnaires.",
+          "Board demands transparent ESG data without paying millions in consultant fees."
+        ],
+        "triggerEvent": "Receiving a formal notice from their largest customer (e.g. BMW or Walmart) that contracts will be paused unless verified emissions data is provided.",
+        "decisionKpi": "Passing the independent external audit with zero material discrepancies in under 30 days."
+      },
+      "secondaryICP": {
+        "archetypeName": "Tier 1 Factory Quality Director",
+        "roleTitle": "Director of Plant Operations",
+        "relationshipToBuyer": "Operational partner who must supply the actual energy and shipment data.",
+        "keyBenefit": "Automated ERP connector extracts data without requiring manual questionnaire forms."
+      },
+      "jobsToBeDone": {
+        "functionalJob": "Aggregate multi-tier Scope 3 carbon emissions data and produce legally compliant CSRD audit packages.",
+        "emotionalJob": "Relief from the terror of regulatory fines or losing marquee enterprise buyer accounts.",
+        "socialJob": "Position the company as a pioneering green manufacturer winning preferential contracts."
+      },
+      "willingnessToPay": {
+        "pricingMetric": "Per enterprise company per year (based on supplier network size)",
+        "starterTier": {
+          "price": "$18,000/yr",
+          "valueAnchor": "Up to 100 connected suppliers with standard CSRD templates."
+        },
+        "growthTier": {
+          "price": "$42,000/yr",
+          "valueAnchor": "Up to 500 connected suppliers with live ERP connectors and auditor portal."
+        },
+        "enterpriseTier": {
+          "price": "$95,000/yr",
+          "valueAnchor": "Unlimited suppliers, custom emissions factor modeling, and dedicated audit support."
+        }
+      },
+      "momTestQuestions": [
+        {
+          "question": "How did your team assemble last year's sustainability disclosures, and how much did you pay external auditors or consultants?",
+          "probingObjective": "Quantify real budget allocation and process misery.",
+          "positiveSignal": "Cites paying $120k to an accounting firm and spending 400 internal staff hours.",
+          "falsePositiveTrap": "'We care deeply about sustainability and plan to invest heavily.' (Virtue signaling without past budget)."
+        },
+        {
+          "question": "What happened the last time a major retail buyer asked for product carbon footprint data?",
+          "probingObjective": "Check if failure to supply data has real commercial consequences.",
+          "positiveSignal": "Admitted that a $2M contract was delayed or nearly lost because of missing Scope 3 documentation.",
+          "falsePositiveTrap": "'They asked for it on a survey once, but never followed up.' (Low urgency)."
+        },
+        {
+          "question": "What percentage of your suppliers actually respond to email questionnaires on emissions?",
+          "probingObjective": "Measure supplier friction and data collection bottlenecks.",
+          "positiveSignal": "Reports response rates below 20% after 3 months of chasing.",
+          "falsePositiveTrap": "'Our suppliers are very collaborative.' (Rarely true for Tier 2/3)."
+        },
+        {
+          "question": "What happens if you fail your limited assurance CSRD audit next year?",
+          "probingObjective": "Test legal compulsion and executive stakes.",
+          "positiveSignal": "Lists specific fines up to 5% of turnover or executive liability.",
+          "falsePositiveTrap": "'We'll probably get an extension.' (Complacent posture)."
+        }
+      ]
+    },
+    "validation": {
+      "overallViabilityScore": 89,
+      "verdict": "STRONG VENTURE CANDIDATE",
+      "dimensionalScores": {
+        "problemUrgency": 96,
+        "marketTiming": 98,
+        "moatDefensibility": 84,
+        "technicalFeasibility": 80,
+        "unitEconomics": 88,
+        "regulatoryEase": 85
+      },
+      "unitEconomicsProjection": {
+        "estimatedCAC": "$4,800 (account-based marketing and partner channel sales)",
+        "estimatedLTV": "$126,000 (assuming 3-year enterprise retention at $42,000 ACV)",
+        "ltvCacRatio": 26.25,
+        "paybackMonths": 1.4,
+        "grossMarginPercent": 82,
+        "economicHealthVerdict": "Elite enterprise B2B software economics driven by high mandatory ACVs and immediate upfront annual billing."
+      },
+      "killRisks": [
+        {
+          "threat": "EU Regulatory Enforcement Rollback or Postponement",
+          "severity": "Critical",
+          "leadIndicator": "European Parliament introduces an amendment postponing CSRD audit deadlines by 2 years.",
+          "countermeasure": "Anchor product value on supply chain cost reduction (energy efficiency and scrap reduction) rather than pure regulatory compliance."
+        },
+        {
+          "threat": "SAP / Oracle Native ESG Module Releases",
+          "severity": "High",
+          "leadIndicator": "SAP launches out-of-the-box Scope 3 calculator bundled free with S/4HANA.",
+          "countermeasure": "Focus on multi-ERP environments where suppliers use hundreds of heterogeneous legacy platforms that SAP cannot unify."
+        },
+        {
+          "threat": "Data Privacy Concerns from Competitive Suppliers",
+          "severity": "Moderate",
+          "leadIndicator": "Suppliers refuse to share bill of materials data fearing price discovery.",
+          "countermeasure": "Implement zero-knowledge proofs and differential privacy on supplier manufacturing formulas."
+        }
+      ],
+      "strategicPivots": [
+        {
+          "pivotAngle": "Green Logistics & Freight Optimization Engine",
+          "shiftSummary": "Pivot from passive retrospective carbon reporting to real-time low-carbon freight route selection.",
+          "rationale": "Directly saves freight shipping costs while cutting emissions simultaneously.",
+          "projectedAdvantage": "Demonstrates immediate cash ROI rather than purely satisfying compliance."
+        },
+        {
+          "pivotAngle": "CBAM (Carbon Border Adjustment Mechanism) Tariff Engine",
+          "shiftSummary": "Focus exclusively on foreign importers calculating EU carbon border tax penalties.",
+          "rationale": "Direct cash impact on import duties creates urgent financial ROI.",
+          "projectedAdvantage": "Unlocks global industrial importers outside the EU."
+        }
+      ]
+    },
+    "execution": {
+      "ninetyDayRoadmap": [
+        {
+          "sprintNumber": 1,
+          "timeframeDays": "Days 1–30",
+          "focusTheme": "Compliance Framework & Manual Pilot",
+          "keyMilestones": [
+            "Partner with 2 mid-market industrial manufacturers facing imminent CSRD reporting deadlines",
+            "Manually audit 50 supplier invoices and calculate product emissions using standard GHG factors"
+          ],
+          "concreteDeliverables": [
+            "Auditor-approved pilot carbon disclosure package",
+            "Signed paid pilot agreements ($10k each) converting to annual contracts upon software launch"
+          ],
+          "stageGateMetric": "External sustainability auditor confirms calculations meet CSRD assurance standards."
+        },
+        {
+          "sprintNumber": 2,
+          "timeframeDays": "Days 31–60",
+          "focusTheme": "Automated Ingestion Engine & Supplier Portal",
+          "keyMilestones": [
+            "Deploy SAP and CSV ingestion pipeline with automated emission factor matching",
+            "Launch zero-login supplier upload portal with OCR document parsing"
+          ],
+          "concreteDeliverables": [
+            "Working software ingestion pipeline processing 1,000 invoices in under 60 seconds",
+            "Supplier response rate exceeding 65% within 14 days"
+          ],
+          "stageGateMetric": "Processing error rate below 3% across 5,000 simulated supplier line items."
+        },
+        {
+          "sprintNumber": 3,
+          "timeframeDays": "Days 61–90",
+          "focusTheme": "Auditor Console & Enterprise Expansion",
+          "keyMilestones": [
+            "Launch auditor console allowing external CPAs to inspect provenance with 1 click",
+            "Sign 5 annual enterprise contracts totaling $200k ARR"
+          ],
+          "concreteDeliverables": [
+            "Live auditor verification portal with cryptographic SHA-256 data provenance stamps",
+            "Case study showing 85% time reduction in CSRD audit readiness"
+          ],
+          "stageGateMetric": "$200,000 in committed contract value (ACV)."
+        }
+      ],
+      "moscowScope": {
+        "mustHave": [
+          "ERP Bill of Materials (BOM) invoice ingestion connector",
+          "DEFRA / ecoinvent verified GHG emissions factor database mapping",
+          "1-Click CSRD ESRS E1 audit-ready PDF/XBRL export"
+        ],
+        "shouldHave": [
+          "Automated email reminder workflow for unresponsive suppliers",
+          "Scenario planner simulating supplier emissions reduction impacts"
+        ],
+        "wontHaveV1": [
+          "Carbon offset marketplace trading",
+          "Real-time IoT sensor hardware integrations",
+          "Public consumer-facing eco-labels"
+        ]
+      },
+      "first100CustomersPlaybook": [
+        {
+          "channel": "Regional Sustainability Auditor Partnerships (PwC/BDO/KPMG)",
+          "playType": "Integration Partner",
+          "tacticalAction": "Present VerdeTrace to mid-market audit partners who struggle with messy client Excel sheets.",
+          "messagingHook": "Use our software to audit your clients' Scope 3 data in 3 days instead of 3 weeks.",
+          "targetCount": "35 enterprise clients referred directly by accounting firms."
+        },
+        {
+          "channel": "Account-Based Marketing to CSRD-Impacted Exporters",
+          "playType": "Founder Outbound",
+          "tacticalAction": "Target US and UK automotive/machinery suppliers selling >$10M into Germany and France.",
+          "messagingHook": "Are your EU customer contracts protected against the January 2026 CSRD audit deadline?",
+          "targetCount": "45 paying enterprises via targeted executive briefings."
+        },
+        {
+          "channel": "Trade Association Webinars & Free Benchmarking Audits",
+          "playType": "Content & SEO",
+          "tacticalAction": "Host joint webinars with European Manufacturing Associations offering free Scope 3 readiness assessments.",
+          "messagingHook": "Benchmark your product line carbon intensity against EU regulatory averages.",
+          "targetCount": "20 enterprises through inbound workshop leads."
+        }
+      ],
+      "pitchDeckOutline": [
+        {
+          "slideNumber": 1,
+          "title": "Cover / Category",
+          "coreHook": "The Compliance Operating System for Global Supply Chain Decarbonization.",
+          "keyEvidence": "Targeting $18.6B Scope 3 CSRD compliance market"
+        },
+        {
+          "slideNumber": 2,
+          "title": "The Problem",
+          "coreHook": "EU CSRD regulations mandate audited Scope 3 data; enterprises face $100k+ consultant bills or customer contract cancellations.",
+          "keyEvidence": "62,000 enterprises legally mandated to comply by 2026"
+        },
+        {
+          "slideNumber": 3,
+          "title": "The Solution",
+          "coreHook": "Automated ERP ledger ingestion and frictionless supplier portals producing audit-ready disclosures in days.",
+          "keyEvidence": "88% cost reduction compared to legacy audit firms"
+        },
+        {
+          "slideNumber": 4,
+          "title": "Market Opportunity",
+          "coreHook": "$4.9B SAM in EU and US industrial mid-market growing at 24.6% CAGR.",
+          "keyEvidence": "Mandatory regulatory tailwind guarantees software adoption"
+        },
+        {
+          "slideNumber": 5,
+          "title": "Product Architecture",
+          "coreHook": "Direct ERP connectors + GHG factor engine + cryptographic auditor console.",
+          "keyEvidence": "4-day audit readiness turnaround"
+        },
+        {
+          "slideNumber": 6,
+          "title": "Business Model & Unit Economics",
+          "coreHook": "$42,000 average ACV annual subscriptions with 82% gross margins.",
+          "keyEvidence": "26x LTV/CAC ratio and 1.4-month payback"
+        },
+        {
+          "slideNumber": 7,
+          "title": "Network Moat & Data Flywheel",
+          "coreHook": "Supplier data network effect: each connected supplier benefits all other buyers in the network.",
+          "keyEvidence": "Proprietary catalog of verified product footprints"
+        },
+        {
+          "slideNumber": 8,
+          "title": "Go-To-Market Execution",
+          "coreHook": "Auditor referral channels + trade association workshops + account-based outbound.",
+          "keyEvidence": "Clear roadmap to $2M ARR in 18 months"
+        },
+        {
+          "slideNumber": 9,
+          "title": "Traction & Pilots",
+          "coreHook": "2 industrial design partners and validated auditor approval.",
+          "keyEvidence": "$50k in contracted pilot revenue"
+        },
+        {
+          "slideNumber": 10,
+          "title": "The Ask & Allocation",
+          "coreHook": "Raising $2.0M Seed round to expand engineering and scale European auditor distribution.",
+          "keyEvidence": "18-month runway to reach $2.5M ARR"
+        }
+      ]
+    },
+    "citations": [
+      {
+        "title": "European Commission: Corporate Sustainability Reporting Directive",
+        "url": "https://finance.ec.europa.eu/capital-markets-union-and-financial-markets/company-reporting-and-auditing/company-reporting/corporate-sustainability-reporting_en",
+        "domain": "ec.europa.eu"
+      },
+      {
+        "title": "GHG Protocol Corporate Value Chain (Scope 3) Standard",
+        "url": "https://ghgprotocol.org/standards/scope-3-standard",
+        "domain": "ghgprotocol.org"
+      },
+      {
+        "title": "SEC Climate-Related Disclosures for Investors",
+        "url": "https://www.sec.gov/news/press-release/2024-31",
+        "domain": "sec.gov"
+      }
+    ],
+    "telemetry": {
+      "durationMs": 5120,
+      "agentsExecuted": 6,
+      "primaryLlm": "gemini",
+      "groundingHits": 11,
+      "cacheHit": true
+    }
+  }
+}

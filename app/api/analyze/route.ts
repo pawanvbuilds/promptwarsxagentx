@@ -8,6 +8,15 @@ import { VentureDAGCoordinator } from "@/lib/engine/coordinator";
 export const runtime = "nodejs";
 export const maxDuration = 300;
 
+/**
+ * POST /api/analyze
+ *
+ * Primary Server-Sent Events (SSE) streaming endpoint executing the 4-stage multi-agent DAG.
+ * Enforces salted IP rate-limiting, Zod input validation, and prompt injection defense.
+ *
+ * @param req - NextRequest containing JSON FounderInput payload.
+ * @returns Streaming text/event-stream response emitting real-time stage transitions and completed dossier.
+ */
 export async function POST(req: NextRequest) {
   // 1. Resolve client IP for rate limiting (anonymized internally via salted SHA-256)
   const clientIp =

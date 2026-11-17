@@ -17,7 +17,11 @@ const WAR_ROOM_WINDOW_MS = 24 * 60 * 60 * 1000; // 24 hours
 const WAR_ROOM_MAX_REQUESTS = 40;
 
 /**
- * Anonymizes raw client IP or fingerprint using salted SHA-256
+ * Anonymizes raw client IP or fingerprint using salted SHA-256 cryptographic hashing.
+ * Raw IP addresses are never retained in memory, ensuring GDPR data privacy compliance.
+ *
+ * @param rawId - Raw client IP address string or visitor identifier.
+ * @returns 64-character hexadecimal SHA-256 hash.
  */
 export function hashClientIdentifier(rawId: string): string {
   return createHash("sha256")
@@ -52,11 +56,23 @@ function checkBucket(
   return { allowed, remaining, resetAt };
 }
 
+/**
+ * Enforces sliding window analysis rate limits for a given visitor.
+ *
+ * @param rawClientIp - Raw IP address of the requesting client.
+ * @returns Object indicating whether the request is allowed, remaining quota, and reset timestamp.
+ */
 export function enforceAnalysisQuota(rawClientIp: string) {
   const hashed = hashClientIdentifier(rawClientIp);
   return checkBucket(analysisBuckets, hashed, ANALYSIS_WINDOW_MS, ANALYSIS_MAX_REQUESTS);
 }
 
+/**
+ * Enforces sliding window consultation rate limits for the War Room co-pilot.
+ *
+ * @param rawClientIp - Raw IP address of the requesting client.
+ * @returns Object indicating whether the consultation is allowed, remaining quota, and reset timestamp.
+ */
 export function enforceWarRoomQuota(rawClientIp: string) {
   const hashed = hashClientIdentifier(rawClientIp);
   return checkBucket(warRoomBuckets, hashed, WAR_ROOM_WINDOW_MS, WAR_ROOM_MAX_REQUESTS);

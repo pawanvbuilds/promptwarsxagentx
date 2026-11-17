@@ -18,7 +18,7 @@ import {
   CheckCircle2,
   Lightbulb,
 } from "lucide-react";
-import type { FounderInput } from "@/lib/types/domain";
+import { FounderInputSchema, type FounderInput } from "@/lib/types/domain";
 import { HeroIllustration3D } from "./ui/HeroIllustration3D";
 
 interface IntakeConsoleProps {
@@ -55,18 +55,22 @@ export function IntakeConsole({
 
   const handleSubmit = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
-    if (!idea.trim() || idea.trim().length < 10) {
-      setError("Please describe your startup concept in at least 10 characters.");
-      return;
-    }
-    setError(null);
-    onSubmit({
+    const parseResult = FounderInputSchema.safeParse({
       idea: idea.trim(),
       region,
       businessModel,
       targetCustomer,
       stage,
     });
+
+    if (!parseResult.success) {
+      const issue = parseResult.error.issues[0]?.message || "Please provide a valid startup concept.";
+      setError(issue);
+      return;
+    }
+
+    setError(null);
+    onSubmit(parseResult.data);
   };
 
   return (

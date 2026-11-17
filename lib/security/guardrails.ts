@@ -21,7 +21,11 @@ export interface ValidationSecurityResult {
 }
 
 /**
- * Sanitizes and validates user input against prompt injection and malicious payloads
+ * Sanitizes and validates user input against prompt injection, malicious script tags, and hostile payloads.
+ *
+ * @param rawInput - The unformatted string submitted by the user.
+ * @param maxLength - Maximum allowed character length (defaults to 2500).
+ * @returns Structured validation result containing sanitized string or flagged rejection reason.
  */
 export function sanitizeFounderInput(
   rawInput: string,

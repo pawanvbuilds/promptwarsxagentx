@@ -97,3 +97,40 @@
 .animate-subtle-pulse {
   animation: subtle-pulse 3s infinite ease-in-out;
 }
+
+/* Hero 3D Illustration SVG Theme Styles */
+.card-screen-body { fill: url(#screenGlassGrad); stroke: url(#screenBorderGrad); }
+.card-screen-nav { fill: #ecfdf5; opacity: 0.6; }
+.card-grid-line { stroke: #e2e8f0; }
+.card-pill-tag { fill: #ffffff; stroke: #e2e8f0; }
+.card-pill-title { fill: #0f172a; }
+.card-pill-sub { fill: #475569; }
+
+html[data-theme="dark"] .card-screen-body,
+html.dark .card-screen-body {
+  fill: url(#darkScreenGlassGrad);
+  stroke: #334155;
+}
+html[data-theme="dark"] .card-screen-nav,
+html.dark .card-screen-nav {
+  fill: #1e293b;
+  opacity: 0.8;
+}
+html[data-theme="dark"] .card-grid-line,
+html.dark .card-grid-line {
+  stroke: #1e293b;
+  opacity: 0.6;
+}
+html[data-theme="dark"] .card-pill-tag,
+html.dark .card-pill-tag {
+  fill: #0f172a;
+  stroke: #334155;
+}
+html[data-theme="dark"] .card-pill-title,
+html.dark .card-pill-title {
+  fill: #f8fafc;
+}
+html[data-theme="dark"] .card-pill-sub,
+html.dark .card-pill-sub {
+  fill: #94a3b8;
+}

@@ -183,9 +183,9 @@ export function normalizePlayType(
 export const FounderInputSchema = z.object({
   idea: z
     .string()
+    .trim()
     .min(10, "Startup idea description must be at least 10 characters")
-    .max(2500, "Startup idea description cannot exceed 2500 characters")
-    .trim(),
+    .max(2500, "Startup idea description cannot exceed 2500 characters"),
   region: z
     .string()
     .min(2, "Region is required")

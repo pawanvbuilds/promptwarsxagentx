@@ -11,23 +11,15 @@ import { HistoryModal } from "@/components/history/HistoryModal";
 import { GuideModal } from "@/components/layout/GuideModal";
 import { SettingsModal } from "@/components/layout/SettingsModal";
 import { PresetsModal } from "@/components/layout/PresetsModal";
-import type { FounderInput, SourceCitation, VentureDossier } from "@/lib/types/domain";
-import type { AgentRole, VentureSSEEvent } from "@/lib/types/agent-events";
+import type { FounderInput } from "@/lib/types/domain";
 import type { ShowcasePreset } from "@/lib/presets/showcase-ventures";
 import { useSavedDossiers } from "@/lib/storage";
+import { useVentureAnalysis } from "@/hooks/useVentureAnalysis";
 import { AlertCircle, X } from "lucide-react";
 
 export default function HomePage() {
   const [activeTab, setActiveTab] = useState<NavTab>("home");
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
-
-  const [activeDossier, setActiveDossier] = useState<VentureDossier | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [progressPercent, setProgressPercent] = useState(0);
-  const [statusMessage, setStatusMessage] = useState("");
-  const [activeAgent, setActiveAgent] = useState<AgentRole>("orchestrator");
-  const [citations, setCitations] = useState<SourceCitation[]>([]);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const [isWarRoomOpen, setIsWarRoomOpen] = useState(false);
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
@@ -37,6 +29,25 @@ export default function HomePage() {
 
   const { savedDossiers, saveDossier, deleteDossier } = useSavedDossiers();
 
+  const {
+    activeDossier,
+    setActiveDossier,
+    isLoading,
+    progressPercent,
+    statusMessage,
+    activeAgent,
+    citations,
+    errorMessage,
+    setErrorMessage,
+    startAnalysis,
+    resetAnalysis,
+    loadDossier,
+  } = useVentureAnalysis({
+    onDossierComplete: (dossier) => {
+      saveDossier(dossier);
+    },
+  });
+
   const handleDeleteDossier = (id: string) => {
     deleteDossier(id);
     if (activeDossier?.id === id) {
@@ -44,109 +55,19 @@ export default function HomePage() {
     }
   };
 
-  // SSE Pipeline Execution
   const handleStartAnalysis = async (input: FounderInput) => {
-    setIsLoading(true);
-    setErrorMessage(null);
-    setProgressPercent(5);
-    setStatusMessage("Establishing connection with multi-agent coordinator...");
-    setActiveAgent("orchestrator");
-    setCitations([]);
-    setActiveDossier(null);
-
-    // Announce to screen reader
-    const announcer = document.getElementById("live-announcer");
-    if (announcer) {
-      announcer.textContent = "Multi-agent validation pipeline initiated.";
-    }
-
-    try {
-      const res = await fetch("/api/analyze", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(input),
-      });
-
-      if (!res.ok) {
-        const errJson = await res.json().catch(() => ({}));
-        throw new Error(errJson.error || errJson.message || `HTTP ${res.status}`);
-      }
-
-      if (!res.body) {
-        throw new Error("No response stream received from analysis engine.");
-      }
-
-      const reader = res.body.getReader();
-      const decoder = new TextDecoder();
-      let buffer = "";
-
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-
-        buffer += decoder.decode(value, { stream: true });
-        const lines = buffer.split("\n\n");
-        buffer = lines.pop() || "";
-
-        for (const line of lines) {
-          const trimmed = line.trim();
-          if (!trimmed.startsWith("data:")) continue;
-
-          try {
-            const rawJson = trimmed.slice(5).trim();
-            const event = JSON.parse(rawJson) as VentureSSEEvent;
-
-            if (event.type === "stage_transition") {
-              setActiveAgent(event.agent);
-              setProgressPercent(event.progressPercent);
-              setStatusMessage(event.message);
-
-              if (announcer) {
-                announcer.textContent = `${event.agent} stage: ${event.message}`;
-              }
-            } else if (event.type === "citations_discovered") {
-              setCitations(event.citations);
-            } else if (event.type === "complete") {
-              setActiveDossier(event.dossier);
-              saveDossier(event.dossier);
-              setIsLoading(false);
-              setProgressPercent(100);
-
-              if (announcer) {
-                announcer.textContent = `Validation dossier complete for ${event.dossier.framing.ventureName}. Overall viability score ${event.dossier.validation.overallViabilityScore}.`;
-              }
-            } else if (event.type === "error") {
-              setErrorMessage(event.message);
-              setIsLoading(false);
-            }
-          } catch {
-            // Ignore partial SSE framing
-          }
-        }
-      }
-    } catch (err) {
-      setErrorMessage(
-        err instanceof Error ? err.message : "Pipeline encountered an unexpected error."
-      );
-      setIsLoading(false);
-    }
+    await startAnalysis(input);
   };
 
   const handleSelectPreset = (preset: ShowcasePreset) => {
-    setActiveDossier(preset.precompiledDossier);
+    loadDossier(preset.precompiledDossier);
     saveDossier(preset.precompiledDossier);
-    setErrorMessage(null);
-    setIsLoading(false);
     setActiveTab("dashboard");
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handleNewAnalysis = () => {
-    setActiveDossier(null);
-    setErrorMessage(null);
-    setIsLoading(false);
-    setProgressPercent(0);
-    setStatusMessage("");
+    resetAnalysis();
     setActiveTab("home");
     window.scrollTo({ top: 0, behavior: "smooth" });
   };

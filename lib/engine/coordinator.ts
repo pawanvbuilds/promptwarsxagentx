@@ -10,6 +10,15 @@ import { globalVentureCache } from "./memoization";
 import type { VentureEventBus } from "./event-bus";
 import type { FounderInput, VentureDossier } from "../types/domain";
 
+/**
+ * Central DAG Orchestrator for the VentureArchitect multi-agent intelligence pipeline.
+ *
+ * Coordinates topological pipeline traversal through 4 execution stages:
+ * - Stage 1: Idea Strategist & Framing Agent (Sequential)
+ * - Stage 2: Parallel Specialist Branches (Market Analyst, Competitor Recon, Customer Profiler)
+ * - Stage 3: Venture Stress Tester Agent (Sequential synthesis of Stage 2 outputs)
+ * - Stage 4: Launch Architect Agent (Execution roadmap & pitch deck generation)
+ */
 export class VentureDAGCoordinator {
   private eventBus: VentureEventBus;
   private ideaAgent = new IdeaStrategistAgent();
@@ -19,12 +28,22 @@ export class VentureDAGCoordinator {
   private validationAgent = new VentureStressTesterAgent();
   private executionAgent = new LaunchArchitectAgent();
 
+  /**
+   * Initializes a new DAG Coordinator bound to a real-time event bus.
+   *
+   * @param eventBus - The typed SSE event bus for streaming state transitions to clients.
+   */
   constructor(eventBus: VentureEventBus) {
     this.eventBus = eventBus;
   }
 
   /**
-   * Orchestrates the 4-stage multi-agent DAG pipeline with parallel specialist branches
+   * Orchestrates the 4-stage multi-agent DAG pipeline with parallel specialist branches.
+   *
+   * @param input - The sanitized founder hypothesis, target region, business model, and stage.
+   * @returns Resolves to the comprehensive, battle-tested VentureDossier.
+   * @throws {LLMProviderError} If all configured LLM providers fail during any DAG stage.
+   * @throws {ValidationError} If synthesized agent outputs fail schema invariants.
    */
   public async runPipeline(input: FounderInput): Promise<VentureDossier> {
     const pipelineStart = Date.now();

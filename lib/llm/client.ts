@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { safeParseJson } from "./json-repair";
+import { LLMProviderError, LLMJsonParseError, ValidationError } from "../errors";
 
 export interface LLMRequestOptions<T> {
   systemPrompt: string;
@@ -182,10 +183,11 @@ export async function executeStructuredAgentPrompt<T>(
       provider = "groq";
       model = result.model;
     } catch (groqErr) {
-      throw new Error(
+      throw new LLMProviderError(
         `All LLM providers exhausted. Primary Gemini error, Groq fallback error: ${
           groqErr instanceof Error ? groqErr.message : String(groqErr)
-        }`
+        }`,
+        "gemini+groq"
       );
     }
   }
@@ -193,7 +195,10 @@ export async function executeStructuredAgentPrompt<T>(
   // Parse and validate with Zod
   const parseResult = safeParseJson<unknown>(rawText);
   if (!parseResult.success) {
-    throw new Error(`Agent produced unparseable JSON: ${parseResult.error}\nRaw: ${rawText.slice(0, 200)}`);
+    throw new LLMJsonParseError(
+      `Agent produced unparseable JSON: ${parseResult.error}`,
+      rawText
+    );
   }
 
   let validation = options.schema.safeParse(parseResult.data);
@@ -220,10 +225,11 @@ export async function executeStructuredAgentPrompt<T>(
   }
 
   if (!validation.success) {
-    throw new Error(
+    throw new ValidationError(
       `Agent schema mismatch: ${validation.error.issues
         .map((i) => `${i.path.join(".")}: ${i.message}`)
-        .join("; ")}`
+        .join("; ")}`,
+      validation.error.issues.map((i) => `${i.path.join(".")}: ${i.message}`)
     );
   }
 

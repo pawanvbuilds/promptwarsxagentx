@@ -18,7 +18,10 @@ class VentureLruCache {
   }
 
   /**
-   * Generates a deterministic SHA-256 hash from founder input
+   * Generates a deterministic SHA-256 hash from normalized founder input parameters.
+   *
+   * @param input - The raw founder input containing idea, region, model, and stage.
+   * @returns 64-character hexadecimal SHA-256 digest string.
    */
   public generateDossierKey(input: FounderInput): string {
     const normalized = [
@@ -33,13 +36,24 @@ class VentureLruCache {
   }
 
   /**
-   * Generates a deterministic SHA-256 hash for war room inquiries
+   * Generates a deterministic SHA-256 hash for war room inquiries.
+   *
+   * @param personaId - Identifier of the consulted advisor persona.
+   * @param question - Founder's inquiry text.
+   * @param dossierId - Optional dossier identifier to scope conversation context.
+   * @returns 64-character hexadecimal SHA-256 digest string.
    */
   public generateWarRoomKey(personaId: string, question: string, dossierId?: string): string {
     const normalized = `${personaId}|${dossierId || "global"}|${question.toLowerCase().trim()}`;
     return createHash("sha256").update(normalized).digest("hex");
   }
 
+  /**
+   * Retrieves a cached dossier by cryptographic key, updating LRU access order.
+   *
+   * @param key - The deterministic SHA-256 key.
+   * @returns The cached VentureDossier or null on a cache miss.
+   */
   public getDossier(key: string): VentureDossier | null {
     const entry = this.cache.get(key);
     if (!entry) {
@@ -55,6 +69,12 @@ class VentureLruCache {
     return entry.data;
   }
 
+  /**
+   * Inserts or updates a dossier in the LRU cache, evicting the least recently used item if full.
+   *
+   * @param key - The deterministic SHA-256 key.
+   * @param data - The complete VentureDossier object to persist.
+   */
   public setDossier(key: string, data: VentureDossier): void {
     if (this.cache.size >= this.maxEntries) {
       const oldestKey = this.cache.keys().next().value;
